@@ -5,8 +5,7 @@
 #include <filesystem>
 #include <cassert>
 
-// #define STB_IMAGE_IMPLEMENTATION
-// #include "../libraries/stb_image.h"
+
 
 class Perceptron {
     public:
@@ -19,11 +18,13 @@ class Perceptron {
         arma::mat softmax(const arma::mat& x);
         arma::mat forward(const arma::mat& X);    
         void backprop(const int y_train);
-        void train(const arma::mat& X_train, const arma::vec& y_train, int epochs, double learning_rate);
+        void train(const std::vector<arma::mat>& X_train, const std::vector<int>& y_train, int epochs, double learning_rate);
         int predict(const arma::mat& X);
         void save_model(const std::string& path);
         void load_model(const std::string& path);
-    
+
+        arma::mat read_image(const std::string& path, int image_bbp = 1);
+        std::vector<arma::mat> read_images(const std::vector<std::string>& pathes);
     private:
         int input_size;
         std::vector<int> hidden_layers_size;

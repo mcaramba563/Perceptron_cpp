@@ -4,6 +4,7 @@
 CMakeFiles/model_try.dir/model.cpp.o
  /home/uladzislau/Desktop/aip/project_cpp/model/model.cpp
  /home/uladzislau/Desktop/aip/project_cpp/model/model.h
+ /home/uladzislau/Desktop/aip/project_cpp/model/stb_image.h
  /usr/include/alloca.h
  /usr/include/armadillo
  /usr/include/armadillo_bits/BaseCube_bones.hpp
@@ -623,6 +624,7 @@ CMakeFiles/model_try.dir/model.cpp.o
  /usr/include/c++/13/istream
  /usr/include/c++/13/limits
  /usr/include/c++/13/locale
+ /usr/include/c++/13/math.h
  /usr/include/c++/13/new
  /usr/include/c++/13/numeric
  /usr/include/c++/13/ostream
@@ -634,6 +636,7 @@ CMakeFiles/model_try.dir/model.cpp.o
  /usr/include/c++/13/ratio
  /usr/include/c++/13/sstream
  /usr/include/c++/13/stdexcept
+ /usr/include/c++/13/stdlib.h
  /usr/include/c++/13/streambuf
  /usr/include/c++/13/string
  /usr/include/c++/13/string_view
@@ -787,11 +790,15 @@ CMakeFiles/model_try.dir/model.cpp.o
  /usr/include/x86_64-linux-gnu/sys/single_threaded.h
  /usr/include/x86_64-linux-gnu/sys/time.h
  /usr/include/x86_64-linux-gnu/sys/types.h
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/emmintrin.h
  /usr/lib/gcc/x86_64-linux-gnu/13/include/limits.h
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/mm_malloc.h
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/mmintrin.h
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h
  /usr/lib/gcc/x86_64-linux-gnu/13/include/syslimits.h
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/xmmintrin.h
 
 CMakeFiles/model_try.dir/model_try.cpp.o
  /home/uladzislau/Desktop/aip/project_cpp/model/model_try.cpp

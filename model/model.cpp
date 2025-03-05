@@ -1,6 +1,10 @@
 // add predict_image
 #include "model.h"
 
+#ifndef STB_IMAGE_IMPLEMENTATION
+#define STB_IMAGE_IMPLEMENTATION
+#include "stb_image.h"
+#endif
 Perceptron::Perceptron(int input_size, std::vector<int> hidden_layers_size, int output_size, double learning_rate, int epochs)
     : input_size(input_size), hidden_layers_size(hidden_layers_size), output_size(output_size), learning_rate(learning_rate), epochs(epochs) {
     
@@ -93,17 +97,13 @@ void Perceptron::backprop(const int y_train) {
     }
 }
 
-void Perceptron::train(const arma::mat& X_train, const arma::vec& y_train, int epochs, double learning_rate) {
+void Perceptron::train(const std::vector<arma::mat>& X_train, const std::vector<int>& y_train, int epochs, double learning_rate) {
     this->epochs = epochs;
     this->learning_rate = learning_rate;
-    // arma::mat y_train_one_hot = arma::zeros(y_train.n_rows, output_size);
-    // for (size_t i = 0; i < y_train.n_rows; ++i) {
-    //     y_train_one_hot(i, y_train(i)) = 1;
-    // }
     for (int epoch = 0; epoch < epochs; ++epoch) {
-        for (size_t ind = 0; ind < X_train.n_rows; ++ind) {
-            forward(X_train.row(ind));
-            backprop(y_train(ind));
+        for (size_t ind = 0; ind < X_train.size(); ++ind) {
+            forward(X_train[ind]);
+            backprop(y_train[ind]);
         }
         std::cout << "Epoch " << epoch + 1 << "/" << epochs << " completed" << std::endl;
     }
@@ -139,3 +139,31 @@ arma::mat Perceptron::one_hot(int y, int n) {
     mat_one_hot(0, y) = 1.0;
     return mat_one_hot;
 }
+
+arma::mat Perceptron::read_image(const std::string& path, int image_bbp) {
+    int width, height, bpp;
+    
+    uint8_t* image = stbi_load(path.c_str(), &width, &height, &bpp, image_bbp);
+    if (image_bbp != bpp) {
+        std::cerr << "Warning image bpp does not match with input bpp, image path: " << path << "\n";
+        std::cerr << bpp << " " << image_bbp << "\n";
+    }
+    std::vector<double> image_vec(height * width, 0.0);
+    for (int i = 0;i < height * width;i++) {
+        image_vec[i] = (double)image[i] / 255.0;
+    }
+    
+    arma::mat ans = arma::conv_to<arma::mat>::from(image_vec);
+    ans.reshape(1, width * height);
+    return ans;
+}
+
+
+std::vector<arma::mat> Perceptron::read_images(const std::vector<std::string>& pathes) {
+    std::vector<arma::mat> ans;
+    for (const std::string& cur_path : pathes) {
+        ans.push_back(read_image(cur_path, 1));
+    }
+    return ans;
+}
+

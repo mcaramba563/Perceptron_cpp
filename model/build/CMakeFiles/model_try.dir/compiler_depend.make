@@ -3,6 +3,7 @@
 
 CMakeFiles/model_try.dir/model.cpp.o: /home/uladzislau/Desktop/aip/project_cpp/model/model.cpp \
   /home/uladzislau/Desktop/aip/project_cpp/model/model.h \
+  /home/uladzislau/Desktop/aip/project_cpp/model/stb_image.h \
   /usr/include/alloca.h \
   /usr/include/armadillo \
   /usr/include/armadillo_bits/BaseCube_bones.hpp \
@@ -622,6 +623,7 @@ CMakeFiles/model_try.dir/model.cpp.o: /home/uladzislau/Desktop/aip/project_cpp/m
   /usr/include/c++/13/istream \
   /usr/include/c++/13/limits \
   /usr/include/c++/13/locale \
+  /usr/include/c++/13/math.h \
   /usr/include/c++/13/new \
   /usr/include/c++/13/numeric \
   /usr/include/c++/13/ostream \
@@ -633,6 +635,7 @@ CMakeFiles/model_try.dir/model.cpp.o: /home/uladzislau/Desktop/aip/project_cpp/m
   /usr/include/c++/13/ratio \
   /usr/include/c++/13/sstream \
   /usr/include/c++/13/stdexcept \
+  /usr/include/c++/13/stdlib.h \
   /usr/include/c++/13/streambuf \
   /usr/include/c++/13/string \
   /usr/include/c++/13/string_view \
@@ -786,11 +789,15 @@ CMakeFiles/model_try.dir/model.cpp.o: /home/uladzislau/Desktop/aip/project_cpp/m
   /usr/include/x86_64-linux-gnu/sys/single_threaded.h \
   /usr/include/x86_64-linux-gnu/sys/time.h \
   /usr/include/x86_64-linux-gnu/sys/types.h \
+  /usr/lib/gcc/x86_64-linux-gnu/13/include/emmintrin.h \
   /usr/lib/gcc/x86_64-linux-gnu/13/include/limits.h \
+  /usr/lib/gcc/x86_64-linux-gnu/13/include/mm_malloc.h \
+  /usr/lib/gcc/x86_64-linux-gnu/13/include/mmintrin.h \
   /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h \
   /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h \
   /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h \
-  /usr/lib/gcc/x86_64-linux-gnu/13/include/syslimits.h
+  /usr/lib/gcc/x86_64-linux-gnu/13/include/syslimits.h \
+  /usr/lib/gcc/x86_64-linux-gnu/13/include/xmmintrin.h
 
 CMakeFiles/model_try.dir/model_try.cpp.o: /home/uladzislau/Desktop/aip/project_cpp/model/model_try.cpp \
   /home/uladzislau/Desktop/aip/project_cpp/model/model.h \
@@ -1586,6 +1593,8 @@ CMakeFiles/model_try.dir/model_try.cpp.o: /home/uladzislau/Desktop/aip/project_c
 
 /home/uladzislau/Desktop/aip/project_cpp/model/model_try.cpp:
 
+/usr/lib/gcc/x86_64-linux-gnu/13/include/xmmintrin.h:
+
 /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h:
@@ -1758,11 +1767,11 @@ CMakeFiles/model_try.dir/model_try.cpp.o: /home/uladzislau/Desktop/aip/project_c
 
 /usr/include/c++/13/tr1/gamma.tcc:
 
-/usr/include/c++/13/tr1/exp_integral.tcc:
-
 /usr/include/c++/13/tr1/ell_integral.tcc:
 
 /usr/include/c++/13/tr1/beta_function.tcc:
+
+/usr/lib/gcc/x86_64-linux-gnu/13/include/mmintrin.h:
 
 /usr/include/c++/13/tr1/bessel_function.tcc:
 
@@ -1774,6 +1783,8 @@ CMakeFiles/model_try.dir/model_try.cpp.o: /home/uladzislau/Desktop/aip/project_c
 
 /usr/include/c++/13/streambuf:
 
+/usr/include/c++/13/stdlib.h:
+
 /usr/include/c++/13/random:
 
 /usr/include/c++/13/pstl/pstl_config.h:
@@ -1783,6 +1794,10 @@ CMakeFiles/model_try.dir/model_try.cpp.o: /home/uladzislau/Desktop/aip/project_c
 /usr/include/c++/13/ostream:
 
 /usr/include/c++/13/new:
+
+/usr/include/c++/13/tr1/exp_integral.tcc:
+
+/usr/include/c++/13/math.h:
 
 /usr/include/x86_64-linux-gnu/bits/getopt_posix.h:
 
@@ -1908,12 +1923,6 @@ CMakeFiles/model_try.dir/model_try.cpp.o: /home/uladzislau/Desktop/aip/project_c
 
 /usr/include/c++/13/bits/predefined_ops.h:
 
-/usr/include/x86_64-linux-gnu/bits/waitflags.h:
-
-/usr/include/armadillo_bits/mtGlue_bones.hpp:
-
-/usr/include/armadillo_bits/op_cx_scalar_bones.hpp:
-
 /usr/include/armadillo_bits/mtGlueCube_meat.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/wordsize.h:
@@ -1963,6 +1972,10 @@ CMakeFiles/model_try.dir/model_try.cpp.o: /home/uladzislau/Desktop/aip/project_c
 /usr/include/armadillo_bits/glue_hist_meat.hpp:
 
 /usr/include/armadillo_bits/fn_sort.hpp:
+
+/usr/include/c++/13/bits/parse_numbers.h:
+
+/usr/include/armadillo_bits/eGlue_bones.hpp:
 
 /usr/include/armadillo_bits/glue_cross_meat.hpp:
 
@@ -2196,7 +2209,7 @@ CMakeFiles/model_try.dir/model_try.cpp.o: /home/uladzislau/Desktop/aip/project_c
 
 /usr/include/armadillo_bits/fn_eig_pair.hpp:
 
-/usr/include/armadillo_bits/glue_max_meat.hpp:
+/usr/include/armadillo_bits/fn_eig_gen.hpp:
 
 /usr/include/armadillo_bits/SpRow_bones.hpp:
 
@@ -2252,6 +2265,8 @@ CMakeFiles/model_try.dir/model_try.cpp.o: /home/uladzislau/Desktop/aip/project_c
 
 /usr/include/armadillo_bits/fn_size.hpp:
 
+/usr/lib/gcc/x86_64-linux-gnu/13/include/emmintrin.h:
+
 /usr/include/armadillo_bits/SpCol_bones.hpp:
 
 /usr/include/armadillo_bits/def_lapack.hpp:
@@ -2264,7 +2279,31 @@ CMakeFiles/model_try.dir/model_try.cpp.o: /home/uladzislau/Desktop/aip/project_c
 
 /usr/include/armadillo_bits/op_flip_bones.hpp:
 
-/usr/include/armadillo_bits/fn_strans.hpp:
+/usr/include/x86_64-linux-gnu/bits/time64.h:
+
+/usr/include/c++/13/ext/type_traits.h:
+
+/usr/include/armadillo_bits/subview_field_meat.hpp:
+
+/usr/include/armadillo_bits/include_superlu.hpp:
+
+/usr/include/c++/13/initializer_list:
+
+/usr/include/armadillo_bits/include_atlas.hpp:
+
+/usr/include/armadillo_bits/Cube_meat.hpp:
+
+/usr/include/armadillo_bits/Col_meat.hpp:
+
+/usr/include/armadillo_bits/op_inv_meat.hpp:
+
+/usr/include/armadillo_bits/Row_meat.hpp:
+
+/usr/include/armadillo_bits/Row_bones.hpp:
+
+/usr/include/armadillo_bits/spop_sum_bones.hpp:
+
+/usr/include/armadillo_bits/debug.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/cpu-set.h:
 
@@ -2292,31 +2331,23 @@ CMakeFiles/model_try.dir/model_try.cpp.o: /home/uladzislau/Desktop/aip/project_c
 
 /usr/include/armadillo_bits/op_dot_meat.hpp:
 
-/usr/include/c++/13/initializer_list:
-
-/usr/include/armadillo_bits/include_atlas.hpp:
-
-/usr/include/armadillo_bits/Cube_meat.hpp:
-
-/usr/include/armadillo_bits/Col_meat.hpp:
-
-/usr/include/armadillo_bits/op_inv_meat.hpp:
-
-/usr/include/armadillo_bits/Row_meat.hpp:
-
-/usr/include/armadillo_bits/Row_bones.hpp:
-
-/usr/include/armadillo_bits/spop_sum_bones.hpp:
-
-/usr/include/armadillo_bits/eOp_bones.hpp:
-
-/usr/include/armadillo_bits/debug.hpp:
+/usr/include/armadillo_bits/fn_strans.hpp:
 
 /usr/include/armadillo_bits/SpSubview_meat.hpp:
 
 /usr/include/armadillo_bits/fn_conv.hpp:
 
 /usr/include/armadillo_bits/Glue_meat.hpp:
+
+/usr/include/armadillo_bits/eOp_bones.hpp:
+
+/home/uladzislau/Desktop/aip/project_cpp/model/stb_image.h:
+
+/usr/include/armadillo_bits/SpBase_bones.hpp:
+
+/usr/include/armadillo_bits/BaseCube_bones.hpp:
+
+/usr/include/armadillo_bits/fn_cov.hpp:
 
 /usr/include/c++/13/bits/char_traits.h:
 
@@ -2331,12 +2362,6 @@ CMakeFiles/model_try.dir/model_try.cpp.o: /home/uladzislau/Desktop/aip/project_c
 /usr/include/armadillo_bits/SizeCube_bones.hpp:
 
 /usr/include/armadillo_bits/subview_each_bones.hpp:
-
-/usr/include/armadillo_bits/SpBase_bones.hpp:
-
-/usr/include/armadillo_bits/BaseCube_bones.hpp:
-
-/usr/include/armadillo_bits/fn_cov.hpp:
 
 /home/uladzislau/Desktop/aip/project_cpp/model/model.cpp:
 
@@ -2381,14 +2406,6 @@ CMakeFiles/model_try.dir/model_try.cpp.o: /home/uladzislau/Desktop/aip/project_c
 /usr/include/armadillo_bits/newarp_DenseGenMatProd_bones.hpp:
 
 /usr/include/armadillo_bits/spop_var_bones.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/time64.h:
-
-/usr/include/c++/13/ext/type_traits.h:
-
-/usr/include/armadillo_bits/subview_field_meat.hpp:
-
-/usr/include/armadillo_bits/include_superlu.hpp:
 
 /usr/include/armadillo_bits/GlueCube_bones.hpp:
 
@@ -2457,6 +2474,8 @@ CMakeFiles/model_try.dir/model_try.cpp.o: /home/uladzislau/Desktop/aip/project_c
 /usr/include/armadillo_bits/Op_bones.hpp:
 
 /usr/include/c++/13/bits/hashtable.h:
+
+/usr/include/armadillo_bits/glue_max_meat.hpp:
 
 /usr/include/armadillo_bits/arma_rng.hpp:
 
@@ -2644,7 +2663,11 @@ CMakeFiles/model_try.dir/model_try.cpp.o: /home/uladzislau/Desktop/aip/project_c
 
 /usr/include/c++/13/bits/locale_facets_nonio.h:
 
-/usr/include/armadillo_bits/fn_eig_gen.hpp:
+/usr/include/x86_64-linux-gnu/bits/waitflags.h:
+
+/usr/include/armadillo_bits/mtGlue_bones.hpp:
+
+/usr/include/armadillo_bits/op_cx_scalar_bones.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
 
@@ -3100,6 +3123,8 @@ CMakeFiles/model_try.dir/model_try.cpp.o: /home/uladzislau/Desktop/aip/project_c
 
 /usr/include/asm-generic/errno.h:
 
+/usr/lib/gcc/x86_64-linux-gnu/13/include/mm_malloc.h:
+
 /usr/include/c++/13/algorithm:
 
 /usr/include/c++/13/backward/binders.h:
@@ -3161,7 +3186,3 @@ CMakeFiles/model_try.dir/model_try.cpp.o: /home/uladzislau/Desktop/aip/project_c
 /usr/include/c++/13/bits/memoryfwd.h:
 
 /usr/include/c++/13/bits/move.h:
-
-/usr/include/armadillo_bits/eGlue_bones.hpp:
-
-/usr/include/c++/13/bits/parse_numbers.h:

@@ -724,4 +724,10 @@ CMakeFiles/model_try.dir/model.cpp.o: \
  /usr/include/c++/13/bits/allocated_ptr.h \
  /usr/include/c++/13/bits/unique_ptr.h /usr/include/c++/13/bits/fs_dir.h \
  /usr/include/c++/13/bits/fs_ops.h /usr/include/c++/13/cassert \
- /usr/include/assert.h
+ /usr/include/assert.h \
+ /home/uladzislau/Desktop/aip/project_cpp/model/stb_image.h \
+ /usr/include/c++/13/stdlib.h /usr/include/c++/13/math.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/emmintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/xmmintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/mmintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/mm_malloc.h
