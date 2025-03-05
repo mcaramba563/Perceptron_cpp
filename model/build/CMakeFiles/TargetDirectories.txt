@@ -1,0 +1,3 @@
+/home/uladzislau/Desktop/aip/project_cpp/model/build/CMakeFiles/model_try.dir
+/home/uladzislau/Desktop/aip/project_cpp/model/build/CMakeFiles/edit_cache.dir
+/home/uladzislau/Desktop/aip/project_cpp/model/build/CMakeFiles/rebuild_cache.dir
