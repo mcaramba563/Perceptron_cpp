@@ -167,3 +167,16 @@ std::vector<arma::mat> Perceptron::read_images(const std::vector<std::string>& p
     return ans;
 }
 
+
+void Perceptron::train_on_specific_images(std::string path) {
+    std::ifstream fin(path);
+    int n;
+    fin >> n;
+    std::vector<std::string> pathes(n);
+    std::vector<int> labels(n);
+    for (int i = 0;i < n;i++) {
+        fin >> pathes[i] >> labels[i];
+    }
+    std::vector<arma::mat> images = read_images(pathes);
+    train(images, labels, epochs, learning_rate);
+}

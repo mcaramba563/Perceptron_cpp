@@ -4,7 +4,7 @@
 #include <cmath>
 #include <filesystem>
 #include <cassert>
-
+#include <fstream>
 
 
 class Perceptron {
@@ -25,6 +25,7 @@ class Perceptron {
 
         arma::mat read_image(const std::string& path, int image_bbp = 1);
         std::vector<arma::mat> read_images(const std::vector<std::string>& pathes);
+        void train_on_specific_images(std::string path_to_file);
     private:
         int input_size;
         std::vector<int> hidden_layers_size;
