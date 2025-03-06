@@ -20,6 +20,7 @@ class Perceptron {
         void backprop(const int y_train);
         void train(const std::vector<arma::mat>& X_train, const std::vector<int>& y_train, int epochs, double learning_rate);
         int predict(const arma::mat& X);
+        int predict_image(std::string path);
         void save_model(const std::string& path);
         void load_model(const std::string& path);
 
