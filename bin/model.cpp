@@ -118,10 +118,53 @@ int Perceptron::predict_image(std::string path) {
     return predict(read_image(path));
 }
 
+// void Perceptron::save_model(const std::string& path) {
+//     arma::mat save_array;
+
+//     save_array = arma::vectorise(weights_output_hidden);
+
+//     for (const auto& w : weights_input_hidden) {
+//         save_array.insert_rows(save_array.n_rows, arma::vectorise(w));
+//     }
+
+//     save_array.save(path, arma::arma_binary);
+// }
+
+// void Perceptron::load_model(const std::string& path) {
+//     arma::mat save_array;
+//     save_array.load(path, arma::arma_binary);
+//     // for (int cur : hidden_layers_size)
+//     //     std::cout << cur << " ";
+//     // std::cout << "\n";
+//     int offset = 0;
+    
+//     weights_output_hidden = arma::reshape(save_array.rows(offset, offset + weights_output_hidden.n_elem - 1),
+//                                           weights_output_hidden.n_rows, weights_output_hidden.n_cols);
+//     offset += weights_output_hidden.n_elem;
+
+//     for (size_t j = 0; j < weights_input_hidden.size(); ++j) {
+//         int rows = weights_input_hidden[j].n_rows;
+//         int cols = weights_input_hidden[j].n_cols;
+
+//         weights_input_hidden[j] = arma::reshape(save_array.rows(offset, offset + (rows * cols) - 1), rows, cols);
+//         offset += rows * cols;
+//     }
+// }
+
 void Perceptron::save_model(const std::string& path) {
     arma::mat save_array;
 
-    save_array = arma::vectorise(weights_output_hidden);
+    arma::mat model_structure(1, hidden_layers_size.size() + 3);
+    model_structure(0, 0) = hidden_layers_size.size();
+    model_structure(0, 1) = input_size;
+    for (size_t i = 0; i < hidden_layers_size.size(); ++i) {
+        model_structure(0,  i + 2) = hidden_layers_size[i];
+    }
+    model_structure(0, hidden_layers_size.size() + 2) = output_size;
+    // std::cout << model_structure << "\n\n\n";
+    save_array.insert_rows(0, arma::vectorise(model_structure)); 
+
+    save_array.insert_rows(save_array.n_rows, arma::vectorise(weights_output_hidden));
 
     for (const auto& w : weights_input_hidden) {
         save_array.insert_rows(save_array.n_rows, arma::vectorise(w));
@@ -136,19 +179,46 @@ void Perceptron::load_model(const std::string& path) {
     save_array.load(path, arma::arma_binary);
 
     int offset = 0;
-    
-    weights_output_hidden = arma::reshape(save_array.rows(offset, offset + weights_output_hidden.n_elem - 1),
-                                          weights_output_hidden.n_rows, weights_output_hidden.n_cols);
-    offset += weights_output_hidden.n_elem;
+    int cur_hidden_layers_size = static_cast<int>(save_array(0, 0));
+    offset++;
 
-    for (size_t j = 0; j < weights_input_hidden.size(); ++j) {
-        int rows = weights_input_hidden[j].n_rows;
-        int cols = weights_input_hidden[j].n_cols;
+    arma::mat model_structure = save_array.rows(offset, offset + cur_hidden_layers_size + 1);
+    model_structure.reshape(1, cur_hidden_layers_size + 2);
+    offset += cur_hidden_layers_size + 2;
+    // std::cout << model_structure << "\n\n\n";
+    input_size = model_structure(0, 0);
+    hidden_layers_size.clear();
+    for (size_t i = 1; i < model_structure.n_cols - 1; ++i) {
+        hidden_layers_size.push_back(static_cast<int>(model_structure(0, i)));
+    }
+    output_size = static_cast<int>(model_structure(0, model_structure.n_cols - 1));
 
+    // std::cout << input_size << " ";
+    // for (int cur : hidden_layers_size)
+    //     std::cout << cur << " ";
+    // std::cout << output_size << "\n";
+
+    gen_weights();
+    bias_gen();
+
+    int output_cols = output_size;
+    int output_rows = hidden_layers_size.back();
+    weights_output_hidden.set_size(output_rows, output_cols);
+    weights_output_hidden = arma::reshape(save_array.rows(offset, offset + (output_rows * output_cols) - 1),
+                                          output_rows, output_cols);
+    offset += output_rows * output_cols;
+
+    for (size_t j = 0; j < hidden_layers_size.size(); ++j) {
+        int rows = (j == 0) ? input_size : hidden_layers_size[j - 1];
+        int cols = hidden_layers_size[j];
+
+        weights_input_hidden[j].set_size(rows, cols);
         weights_input_hidden[j] = arma::reshape(save_array.rows(offset, offset + (rows * cols) - 1), rows, cols);
         offset += rows * cols;
     }
 }
+
+
 
 
 arma::mat Perceptron::one_hot(int y, int n) {
@@ -185,7 +255,13 @@ std::vector<arma::mat> Perceptron::read_images(const std::vector<std::string>& p
 }
 
 
-void Perceptron::train_on_specific_images(std::string path) {
+void Perceptron::train_on_specific_images(std::string path, int cur_epochs, double cur_learning_rate) {
+    if (cur_epochs != -100){
+        this->epochs = cur_epochs;
+    }
+    if (learning_rate != -100) {
+        this->learning_rate = cur_learning_rate;
+    }
     std::ifstream fin(path);
     int n;
     fin >> n;

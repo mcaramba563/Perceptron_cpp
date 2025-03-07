@@ -129,6 +129,30 @@ model_try/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/model_try.dir/build.make CMakeFiles/model_try.dir/build
 .PHONY : model_try/fast
 
+app.o: app.cpp.o
+.PHONY : app.o
+
+# target to build an object file
+app.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/model_try.dir/build.make CMakeFiles/model_try.dir/app.cpp.o
+.PHONY : app.cpp.o
+
+app.i: app.cpp.i
+.PHONY : app.i
+
+# target to preprocess a source file
+app.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/model_try.dir/build.make CMakeFiles/model_try.dir/app.cpp.i
+.PHONY : app.cpp.i
+
+app.s: app.cpp.s
+.PHONY : app.s
+
+# target to generate assembly for a file
+app.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/model_try.dir/build.make CMakeFiles/model_try.dir/app.cpp.s
+.PHONY : app.cpp.s
+
 model.o: model.cpp.o
 .PHONY : model.o
 
@@ -186,6 +210,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... model_try"
+	@echo "... app.o"
+	@echo "... app.i"
+	@echo "... app.s"
 	@echo "... model.o"
 	@echo "... model.i"
 	@echo "... model.s"

@@ -1,5 +1,5 @@
-CMakeFiles/model_try.dir/model_try.cpp.o: \
- /home/uladzislau/Desktop/aip/project_cpp/bin/model_try.cpp \
+CMakeFiles/model_try.dir/app.cpp.o: \
+ /home/uladzislau/Desktop/aip/project_cpp/bin/app.cpp \
  /usr/include/stdc-predef.h \
  /home/uladzislau/Desktop/aip/project_cpp/bin/app.h \
  /home/uladzislau/Desktop/aip/project_cpp/bin/model.h \

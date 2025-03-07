@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/uladzislau/Desktop/aip/project_cpp/bin/app.cpp" "CMakeFiles/model_try.dir/app.cpp.o" "gcc" "CMakeFiles/model_try.dir/app.cpp.o.d"
   "/home/uladzislau/Desktop/aip/project_cpp/bin/model.cpp" "CMakeFiles/model_try.dir/model.cpp.o" "gcc" "CMakeFiles/model_try.dir/model.cpp.o.d"
   "/home/uladzislau/Desktop/aip/project_cpp/bin/model_try.cpp" "CMakeFiles/model_try.dir/model_try.cpp.o" "gcc" "CMakeFiles/model_try.dir/model_try.cpp.o.d"
   )
