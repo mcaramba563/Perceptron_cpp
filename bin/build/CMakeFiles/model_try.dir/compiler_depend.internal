@@ -796,8 +796,8 @@ CMakeFiles/model_try.dir/app.cpp.o
 
 CMakeFiles/model_try.dir/model.cpp.o
  /home/uladzislau/Desktop/aip/project_cpp/bin/model.cpp
+ /home/uladzislau/Desktop/aip/project_cpp/libraries/stb_image.h
  /home/uladzislau/Desktop/aip/project_cpp/bin/model.h
- /home/uladzislau/Desktop/aip/project_cpp/bin/stb_image.h
  /usr/include/alloca.h
  /usr/include/armadillo
  /usr/include/armadillo_bits/BaseCube_bones.hpp

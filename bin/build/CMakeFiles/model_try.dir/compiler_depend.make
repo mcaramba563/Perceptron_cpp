@@ -794,8 +794,8 @@ CMakeFiles/model_try.dir/app.cpp.o: /home/uladzislau/Desktop/aip/project_cpp/bin
   /usr/lib/gcc/x86_64-linux-gnu/13/include/syslimits.h
 
 CMakeFiles/model_try.dir/model.cpp.o: /home/uladzislau/Desktop/aip/project_cpp/bin/model.cpp \
+  /home/uladzislau/Desktop/aip/project_cpp/libraries/stb_image.h \
   /home/uladzislau/Desktop/aip/project_cpp/bin/model.h \
-  /home/uladzislau/Desktop/aip/project_cpp/bin/stb_image.h \
   /usr/include/alloca.h \
   /usr/include/armadillo \
   /usr/include/armadillo_bits/BaseCube_bones.hpp \
@@ -2388,8 +2388,6 @@ CMakeFiles/model_try.dir/model_try.cpp.o: /home/uladzislau/Desktop/aip/project_c
 
 /usr/include/c++/13/stdlib.h:
 
-/home/uladzislau/Desktop/aip/project_cpp/bin/stb_image.h:
-
 /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h:
@@ -2861,6 +2859,8 @@ CMakeFiles/model_try.dir/model_try.cpp.o: /home/uladzislau/Desktop/aip/project_c
 /usr/include/armadillo_bits/fn_randu.hpp:
 
 /usr/include/armadillo_bits/OpCube_meat.hpp:
+
+/home/uladzislau/Desktop/aip/project_cpp/libraries/stb_image.h:
 
 /usr/include/c++/13/cmath:
 

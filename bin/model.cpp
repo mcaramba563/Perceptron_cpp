@@ -48,7 +48,12 @@ arma::mat Perceptron::softmax(const arma::mat& x) {
 
 arma::mat Perceptron::forward(const arma::mat& X) {
     this->X = X;
-    
+    // std::cout << input_size << " ";
+    // for (int cur : hidden_layers_size)
+    //     std::cout << cur << " ";
+    // std::cout << output_size << "\n";
+
+   
     hidden_layer_input.clear();
     hidden_layer_output.clear();
     
@@ -192,11 +197,6 @@ void Perceptron::load_model(const std::string& path) {
         hidden_layers_size.push_back(static_cast<int>(model_structure(0, i)));
     }
     output_size = static_cast<int>(model_structure(0, model_structure.n_cols - 1));
-
-    // std::cout << input_size << " ";
-    // for (int cur : hidden_layers_size)
-    //     std::cout << cur << " ";
-    // std::cout << output_size << "\n";
 
     gen_weights();
     bias_gen();
