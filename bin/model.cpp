@@ -1,5 +1,5 @@
-// add predict_image
 #include "model.h"
+#include <stdexcept>
 
 #ifndef STB_IMAGE_IMPLEMENTATION
 #define STB_IMAGE_IMPLEMENTATION
@@ -105,6 +105,7 @@ void Perceptron::backprop(const int y_train) {
 void Perceptron::train(const std::vector<arma::mat>& X_train, const std::vector<int>& y_train, int epochs, double learning_rate) {
     this->epochs = epochs;
     this->learning_rate = learning_rate;
+    std::cout << "Starting training\n";
     for (int epoch = 0; epoch < epochs; ++epoch) {
         for (size_t ind = 0; ind < X_train.size(); ++ind) {
             forward(X_train[ind]);
@@ -122,39 +123,6 @@ int Perceptron::predict(const arma::mat& X) {
 int Perceptron::predict_image(std::string path) {
     return predict(read_image(path));
 }
-
-// void Perceptron::save_model(const std::string& path) {
-//     arma::mat save_array;
-
-//     save_array = arma::vectorise(weights_output_hidden);
-
-//     for (const auto& w : weights_input_hidden) {
-//         save_array.insert_rows(save_array.n_rows, arma::vectorise(w));
-//     }
-
-//     save_array.save(path, arma::arma_binary);
-// }
-
-// void Perceptron::load_model(const std::string& path) {
-//     arma::mat save_array;
-//     save_array.load(path, arma::arma_binary);
-//     // for (int cur : hidden_layers_size)
-//     //     std::cout << cur << " ";
-//     // std::cout << "\n";
-//     int offset = 0;
-    
-//     weights_output_hidden = arma::reshape(save_array.rows(offset, offset + weights_output_hidden.n_elem - 1),
-//                                           weights_output_hidden.n_rows, weights_output_hidden.n_cols);
-//     offset += weights_output_hidden.n_elem;
-
-//     for (size_t j = 0; j < weights_input_hidden.size(); ++j) {
-//         int rows = weights_input_hidden[j].n_rows;
-//         int cols = weights_input_hidden[j].n_cols;
-
-//         weights_input_hidden[j] = arma::reshape(save_array.rows(offset, offset + (rows * cols) - 1), rows, cols);
-//         offset += rows * cols;
-//     }
-// }
 
 void Perceptron::save_model(const std::string& path) {
     arma::mat save_array;
@@ -227,10 +195,22 @@ arma::mat Perceptron::one_hot(int y, int n) {
     return mat_one_hot;
 }
 
+bool Perceptron::image_path_correct(const std::string& path) {
+    std::ifstream f(path.c_str());
+    return f.good();
+}
+
 arma::mat Perceptron::read_image(const std::string& path, int image_bbp) {
     int width, height, bpp;
-    
+    if (!image_path_correct(path)) {
+        std::cout << "Invalid image path: " << path << "\n";
+        throw std::runtime_error{"loading image error"};
+    }    
     uint8_t* image = stbi_load(path.c_str(), &width, &height, &bpp, image_bbp);
+    if (image_bbp != bpp) {
+        std::cout << "Invalid number of colors in image " << path << "\n";
+        throw std::runtime_error{"imvalid bpp"};
+    }
     if (image_bbp != bpp) {
         std::cerr << "Warning image bpp does not match with input bpp, image path: " << path << "\n";
         std::cerr << bpp << " " << image_bbp << "\n";

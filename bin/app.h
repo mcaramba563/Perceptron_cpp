@@ -20,6 +20,7 @@ public:
 private:
     Perceptron defaultModel;
     Perceptron nn;
+    bool fileExists(std::string const& path);
 };
 
 #endif

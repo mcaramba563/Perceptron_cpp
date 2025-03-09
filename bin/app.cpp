@@ -34,21 +34,27 @@ int App::doTrain(const std::vector<std::string> args) {
 
     int epochs = std::stoi(args[2]);
     double learningRate = std::stod(args[3]);
-    // if (epochs <= 0 || learningRate <= 0) {
-    //     std::cerr << "Check epochs and learning_rate values" << std::endl;
-    //     return -1;
-    // }
+    if (epochs <= 0 || learningRate <= 0) {
+        std::cerr << "Check epochs and learning_rate values" << std::endl;
+        return -1;
+    }
 
     std::vector<std::string> paths;
     std::vector<int> labels;
     std::string filename = args[1];
-    // if (!fileExists(filename)) {
-    //     std::cerr << "Check the file name" << std::endl;
-    //     return -1;
-    // }
+    if (!fileExists(filename)) {
+        std::cerr << "Check the file name" << std::endl;
+        return -1;
+    }
+    
     // nn.train_on_specific_images(filename);
     nn.train_on_specific_images(filename, epochs, learningRate);
     return 0;
+}
+
+bool App::fileExists(std::string const& path) {
+    std::ifstream f(path.c_str());
+    return f.good();
 }
 
 int App::doMakeCustomModel(const std::vector<std::string> args) {
@@ -80,10 +86,10 @@ int App::doLoadCustomModel(const std::vector<std::string> args) {
         return -1;
     }
 
-    // if (!fileExists(args[1])) {
-    //     std::cerr << "Invalid file name" << std::endl;
-    //     return -1;
-    // }
+    if (!fileExists(args[1])) {
+        std::cerr << "Invalid file name" << std::endl;
+        return -1;
+    }
 
     nn.load_model(args[1]);
     defaultModel = nn;

@@ -1,27 +1,48 @@
 #include "app.h"
+#include <sstream>
+#include <string>
 
 int main() {
-    // Perceptron p(28 * 28, {400, 256, 128}, 10, 0.01, 5);
-    // p.save_model("../../models/tmp_model");
-    // p.load_model("../../models/first_model_5_epochs");
+    // predict ../../images/mnist_png/train/1/11107.png
+    App app;
+    while (true) {
+        std::string input;
+        std::getline(std::cin, input);
+        
+        std::vector<std::string> args;
+        std::istringstream istream(input);
 
-    // // p.train_on_specific_images("../test_train.txt");
-    // arma::mat image_0 = p.read_image("../../test_libraries/image_read_test/21.png");
-    // arma::mat cur = p.forward(image_0);
-    // std::cout << cur << "\n";
-    // std::cout << "------------------------------------------------------\n";
-    // std::cout << p.predict(image_0) << "\n";
+        std::string cur_arg;
+        while (istream >> cur_arg) {
+            args.push_back(cur_arg);
+        }
 
-    // p.save_model("../../models/first_model_5_epochs");
-    // std::cout << "asd";
-    App my_app;
-    my_app.doMakeCustomModel({"", "400 200 128"});
-    
-    // my_app.doTrain({"", "../test_train.txt", "5", "0.01"});
-    // my_app.doSaveModel({"", "../../models/tmp_model"});
-
-    my_app.doPredict({"", "../../images/mnist_png/train/0/21.png"});
-    my_app.doLoadDefaultModel();
-    my_app.doPredict({"", "../../images/mnist_png/train/0/21.png"});
+        if (args[0] == "exit")
+            break;
+        if (args[0] == "predict") {
+            app.doPredict(args);
+            continue;
+        } else if (args[0] == "train") {
+            app.doTrain(args);
+            continue;
+        } else if (args[0] == "load_default_model") {
+            app.doLoadDefaultModel();
+            continue;
+        } else if (args[0] == "make_custom_model") {
+            app.doMakeCustomModel(args);
+            continue;
+        } else if (args[0] == "reset_training") {
+            app.resetTraining();
+            continue;
+        } else if (args[0] == "load_custom_model") {
+            app.doLoadCustomModel(args);
+            continue;
+        } else if (args[0] == "save_model") {
+            app.doSaveModel(args);
+            continue;
+        } else {
+            std::cout << "Invalid mode. Available mods: exit, predict, train, load_default_model, make_custom_model, reset_training, load_custom_model, save_model\n";
+        }
+    }
     return 0;
 }

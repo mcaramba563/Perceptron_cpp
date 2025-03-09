@@ -43,5 +43,7 @@ class Perceptron {
         arma::mat final_hidden_layer_output;
 
         arma::mat X;
-        arma::mat one_hot(int y, int n=10);
+        arma::mat one_hot(int y, int n=10);       
+        
+        bool image_path_correct(const std::string& path); 
 };
