@@ -65,6 +65,16 @@ CMAKE_BINARY_DIR = /home/uladzislau/Desktop/aip/project_cpp/bin/build
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+.PHONY : test/fast
+
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "No interactive CMake dialog available..."
@@ -84,6 +94,51 @@ rebuild_cache:
 # Special rule for the target rebuild_cache
 rebuild_cache/fast: rebuild_cache
 .PHONY : rebuild_cache/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+.PHONY : list_install_components/fast
+
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -129,6 +184,32 @@ model_try/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/model_try.dir/build.make CMakeFiles/model_try.dir/build
 .PHONY : model_try/fast
 
+#=============================================================================
+# Target rules for targets named model_tests
+
+# Build rule for target.
+model_tests: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 model_tests
+.PHONY : model_tests
+
+# fast build rule for target.
+model_tests/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/model_tests.dir/build.make CMakeFiles/model_tests.dir/build
+.PHONY : model_tests/fast
+
+#=============================================================================
+# Target rules for targets named doctest_with_main
+
+# Build rule for target.
+doctest_with_main: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 doctest_with_main
+.PHONY : doctest_with_main
+
+# fast build rule for target.
+doctest_with_main/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/doctest-build/CMakeFiles/doctest_with_main.dir/build.make _deps/doctest-build/CMakeFiles/doctest_with_main.dir/build
+.PHONY : doctest_with_main/fast
+
 app.o: app.cpp.o
 .PHONY : app.o
 
@@ -159,6 +240,7 @@ model.o: model.cpp.o
 # target to build an object file
 model.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/model_try.dir/build.make CMakeFiles/model_try.dir/model.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/model_tests.dir/build.make CMakeFiles/model_tests.dir/model.cpp.o
 .PHONY : model.cpp.o
 
 model.i: model.cpp.i
@@ -167,6 +249,7 @@ model.i: model.cpp.i
 # target to preprocess a source file
 model.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/model_try.dir/build.make CMakeFiles/model_try.dir/model.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/model_tests.dir/build.make CMakeFiles/model_tests.dir/model.cpp.i
 .PHONY : model.cpp.i
 
 model.s: model.cpp.s
@@ -175,7 +258,32 @@ model.s: model.cpp.s
 # target to generate assembly for a file
 model.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/model_try.dir/build.make CMakeFiles/model_try.dir/model.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/model_tests.dir/build.make CMakeFiles/model_tests.dir/model.cpp.s
 .PHONY : model.cpp.s
+
+model_tests.o: model_tests.cpp.o
+.PHONY : model_tests.o
+
+# target to build an object file
+model_tests.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/model_tests.dir/build.make CMakeFiles/model_tests.dir/model_tests.cpp.o
+.PHONY : model_tests.cpp.o
+
+model_tests.i: model_tests.cpp.i
+.PHONY : model_tests.i
+
+# target to preprocess a source file
+model_tests.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/model_tests.dir/build.make CMakeFiles/model_tests.dir/model_tests.cpp.i
+.PHONY : model_tests.cpp.i
+
+model_tests.s: model_tests.cpp.s
+.PHONY : model_tests.s
+
+# target to generate assembly for a file
+model_tests.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/model_tests.dir/build.make CMakeFiles/model_tests.dir/model_tests.cpp.s
+.PHONY : model_tests.cpp.s
 
 model_try.o: model_try.cpp.o
 .PHONY : model_try.o
@@ -208,7 +316,14 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
+	@echo "... install"
+	@echo "... install/local"
+	@echo "... install/strip"
+	@echo "... list_install_components"
 	@echo "... rebuild_cache"
+	@echo "... test"
+	@echo "... doctest_with_main"
+	@echo "... model_tests"
 	@echo "... model_try"
 	@echo "... app.o"
 	@echo "... app.i"
@@ -216,6 +331,9 @@ help:
 	@echo "... model.o"
 	@echo "... model.i"
 	@echo "... model.s"
+	@echo "... model_tests.o"
+	@echo "... model_tests.i"
+	@echo "... model_tests.s"
 	@echo "... model_try.o"
 	@echo "... model_try.i"
 	@echo "... model_try.s"
