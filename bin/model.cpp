@@ -208,13 +208,10 @@ arma::mat Perceptron::read_image(const std::string& path, int image_bbp) {
     }    
     uint8_t* image = stbi_load(path.c_str(), &width, &height, &bpp, image_bbp);
     if (image_bbp != bpp) {
-        std::cout << "Invalid number of colors in image " << path << "\n";
+        std::cout << "Error: image bpp does not match with input bpp, image path: " << path << "\n";
         throw std::runtime_error{"imvalid bpp"};
     }
-    if (image_bbp != bpp) {
-        std::cerr << "Warning image bpp does not match with input bpp, image path: " << path << "\n";
-        std::cerr << bpp << " " << image_bbp << "\n";
-    }
+    
     std::vector<double> image_vec(height * width, 0.0);
     for (int i = 0;i < height * width;i++) {
         image_vec[i] = (double)image[i] / 255.0;

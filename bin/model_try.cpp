@@ -16,7 +16,9 @@ int main() {
         while (istream >> cur_arg) {
             args.push_back(cur_arg);
         }
-
+        if (args.size() == 0) {
+            continue;
+        }
         if (args[0] == "exit")
             break;
         if (args[0] == "predict") {
