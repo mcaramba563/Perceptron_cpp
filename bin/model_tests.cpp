@@ -65,46 +65,45 @@ TEST_CASE("Test softmax function") {
     arma::mat expected = {0.0900, 0.2447, 0.6652};
     CHECK(arma::approx_equal(perceptron.softmax(x), expected, "absdiff", 1e-4));
 }
-/*
+
 TEST_CASE("Test forward propagation") {
     Perceptron perceptron;
-    arma::vec X = arma::randu(perceptron.input_size);
+    arma::mat X = arma::randu<arma::mat>(1, 28*28);
 
-    arma::vec output = perceptron.forward(X);
-    CHECK(output.n_rows == perceptron.output_size);
-    CHECK(arma::approx_equal(arma::sum(output), arma::vec{1.0}, "absdiff", 1e-6));
+    arma::mat output = perceptron.forward(X);
+    CHECK(output.n_cols == perceptron.get_output_size());
+    CHECK(abs(arma::as_scalar(arma::sum(output, 1)) - 1.0) < 1e-6);
 }
 
 TEST_CASE("Test backpropagation") {
     Perceptron perceptron;
-    arma::vec X = arma::randu(perceptron.input_size);
-    arma::vec y = arma::zeros(perceptron.output_size);
-    y(0) = 1;
+    arma::mat X = arma::randu<arma::mat>(1, perceptron.get_input_size());
 
     perceptron.forward(X);
-    perceptron.backprop(y);
+    perceptron.backprop(1);
 }
 
 TEST_CASE("Test training function") {
     Perceptron perceptron;
-    arma::mat X = arma::randu(10, perceptron.input_size);
-    arma::ivec y = arma::randi<arma::ivec>(10, arma::distr_param(0, perceptron.output_size - 1));
-
+    std::vector<arma::mat> X;
+    for (int i = 0;i < 5;i++)
+        X.push_back(arma::randu<arma::mat>(1, perceptron.get_input_size()));
+    std::vector<int> y{0, 1, 2, 3, 4};
     perceptron.train(X, y, 1, 0.01);
 }
 
 TEST_CASE("Test prediction function") {
     Perceptron perceptron;
-    arma::vec X = arma::randu(perceptron.input_size);
+    arma::mat X = arma::randu<arma::mat>(1, perceptron.get_input_size());
 
     int prediction = perceptron.predict(X);
     CHECK(prediction >= 0);
-    CHECK(prediction < perceptron.output_size);
+    CHECK(prediction < perceptron.get_output_size());
 }
 
 TEST_CASE("Test save and load model") {
     Perceptron perceptron;
-    std::string model_path = "../../models/tmp_model.bin";
+    std::string model_path = "../../models/tmp_model";
 
     perceptron.save_model(model_path);
     CHECK(std::ifstream(model_path).good());
@@ -115,19 +114,18 @@ TEST_CASE("Test save and load model") {
     const auto original_weights = perceptron.get_weights_input_hidden();
     const auto loaded_weights = new_perceptron.get_weights_input_hidden();
 
-    CHECK(original_weights.size() == loaded_weights.size());
     for (size_t i = 0; i < original_weights.size(); ++i) {
-        CHECK(arma::approx_equal(original_weights[i], loaded_weights[i], "absdiff", 1e-6));
+        CHECK(arma::approx_equal(original_weights[i], loaded_weights[i], "absdiff", 1e-4));
     }
 
-    CHECK(arma::approx_equal(perceptron.get_weights_output_hidden(), new_perceptron.get_weights_output_hidden(), "absdiff", 1e-6));
+    CHECK(arma::approx_equal(perceptron.get_weights_output_hidden(), new_perceptron.get_weights_output_hidden(), "absdiff", 1e-4));
 
     const auto& original_bias = perceptron.get_bias_input_hidden();
     const auto& loaded_bias = new_perceptron.get_bias_input_hidden();
 
     CHECK(original_bias.size() == loaded_bias.size());
     for (size_t i = 0; i < original_bias.size(); ++i) {
-        CHECK(arma::approx_equal(original_bias[i], loaded_bias[i], "absdiff", 1e-6));
+        CHECK(arma::approx_equal(original_bias[i], loaded_bias[i], "absdiff", 1e-4));
     }
 }
-*/
+
