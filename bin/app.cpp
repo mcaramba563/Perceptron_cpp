@@ -6,11 +6,11 @@
 App::App() {
     nn = Perceptron();
     defaultModel = Perceptron();
-    defaultModel.load_model("../../models/default_model");
-    nn.load_model("../../models/default_model");
+    // defaultModel.load_model("../../models/default_model");
+    // nn.load_model("../../models/default_model");
 }
 
-int App::doPredict(const std::vector<std::string> args) {
+int App::do_predict(const std::vector<std::string> args) {
     if (args.size() < 2) {
         std::cerr << "You need to specify the path to file" << std::endl;
         return -1;
@@ -26,7 +26,7 @@ int App::doPredict(const std::vector<std::string> args) {
     return 0;
 }
 
-int App::doTrain(const std::vector<std::string> args) {
+int App::do_train(const std::vector<std::string> args) {
     if (args.size() < 4) {
         std::cerr << "Specify the path to file, epochs, and learning rate" << std::endl;
         return -1;
@@ -42,7 +42,7 @@ int App::doTrain(const std::vector<std::string> args) {
     std::vector<std::string> paths;
     std::vector<int> labels;
     std::string filename = args[1];
-    if (!fileExists(filename)) {
+    if (!file_exists(filename)) {
         std::cerr << "Check the file name" << std::endl;
         return -1;
     }
@@ -52,12 +52,12 @@ int App::doTrain(const std::vector<std::string> args) {
     return 0;
 }
 
-bool App::fileExists(std::string const& path) {
+bool App::file_exists(std::string const& path) {
     std::ifstream f(path.c_str());
     return f.good();
 }
 
-int App::doMakeCustomModel(const std::vector<std::string> args) {
+int App::do_make_custom_model(const std::vector<std::string> args) {
     if (args.size() < 2) {
         std::cerr << "Specify the count of neurons in each layer" << std::endl;
         return -1;
@@ -80,13 +80,13 @@ int App::doMakeCustomModel(const std::vector<std::string> args) {
     return 0;
 }
 
-int App::doLoadCustomModel(const std::vector<std::string> args) {
+int App::do_load_custom_model(const std::vector<std::string> args) {
     if (args.size() < 2) {
         std::cerr << "Specify the path to the file" << std::endl;
         return -1;
     }
 
-    if (!fileExists(args[1])) {
+    if (!file_exists(args[1])) {
         std::cerr << "Invalid file name" << std::endl;
         return -1;
     }
@@ -96,7 +96,7 @@ int App::doLoadCustomModel(const std::vector<std::string> args) {
     return 0;
 }
 
-int App::doSaveModel(const std::vector<std::string> args) {
+int App::do_save_model(const std::vector<std::string> args) {
     if (args.size() < 2) {
         std::cerr << "Specify the path to the file" << std::endl;
         return -1;
@@ -111,11 +111,11 @@ int App::doSaveModel(const std::vector<std::string> args) {
     }
 }
 
-void App::doLoadDefaultModel() {
+void App::do_load_default_model() {
     nn.load_model("../../models/default_model");
     defaultModel.load_model("../../models/default_model");
 }
 
-void App::resetTraining() {
+void App::reset_training() {
     nn = defaultModel;
 }

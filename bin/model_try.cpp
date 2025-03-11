@@ -22,25 +22,25 @@ int main() {
         if (args[0] == "exit")
             break;
         if (args[0] == "predict") {
-            app.doPredict(args);
+            app.do_predict(args);
             continue;
         } else if (args[0] == "train") {
-            app.doTrain(args);
+            app.do_train(args);
             continue;
         } else if (args[0] == "load_default_model") {
-            app.doLoadDefaultModel();
+            app.do_load_default_model();
             continue;
         } else if (args[0] == "make_custom_model") {
-            app.doMakeCustomModel(args);
+            app.do_make_custom_model(args);
             continue;
         } else if (args[0] == "reset_training") {
-            app.resetTraining();
+            app.reset_training();
             continue;
         } else if (args[0] == "load_custom_model") {
-            app.doLoadCustomModel(args);
+            app.do_load_custom_model(args);
             continue;
         } else if (args[0] == "save_model") {
-            app.doSaveModel(args);
+            app.do_save_model(args);
             continue;
         } else {
             std::cout << "Invalid mode. Available mods: exit, predict, train, load_default_model, make_custom_model, reset_training, load_custom_model, save_model\n";

@@ -142,6 +142,10 @@ void Perceptron::save_model(const std::string& path) {
     for (const auto& w : weights_input_hidden) {
         save_array.insert_rows(save_array.n_rows, arma::vectorise(w));
     }
+    
+    for (const auto& b : bias_input_hidden) {
+        save_array.insert_rows(save_array.n_rows, arma::vectorise(b));
+    }
 
     save_array.save(path, arma::arma_binary);
 }
@@ -184,6 +188,14 @@ void Perceptron::load_model(const std::string& path) {
         weights_input_hidden[j] = arma::reshape(save_array.rows(offset, offset + (rows * cols) - 1), rows, cols);
         offset += rows * cols;
     }
+
+    for (size_t j = 0; j < bias_input_hidden.size(); ++j) {
+        int cols = bias_input_hidden[j].n_cols;
+
+        bias_input_hidden[j] = arma::reshape(save_array.rows(offset, offset + cols - 1), 1, cols);
+        offset += cols;
+    }
+
 }
 
 
