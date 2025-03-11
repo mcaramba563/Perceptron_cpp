@@ -64,5 +64,6 @@ set(CMAKE_MAKEFILE_PRODUCTS
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/model_try.dir/DependInfo.cmake"
   "CMakeFiles/model_tests.dir/DependInfo.cmake"
+  "CMakeFiles/app_tests.dir/DependInfo.cmake"
   "_deps/doctest-build/CMakeFiles/doctest_with_main.dir/DependInfo.cmake"
   )

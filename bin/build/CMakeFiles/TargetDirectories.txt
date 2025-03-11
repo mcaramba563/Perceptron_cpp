@@ -1,5 +1,6 @@
 /home/uladzislau/Desktop/aip/project_cpp/bin/build/CMakeFiles/model_try.dir
 /home/uladzislau/Desktop/aip/project_cpp/bin/build/CMakeFiles/model_tests.dir
+/home/uladzislau/Desktop/aip/project_cpp/bin/build/CMakeFiles/app_tests.dir
 /home/uladzislau/Desktop/aip/project_cpp/bin/build/CMakeFiles/test.dir
 /home/uladzislau/Desktop/aip/project_cpp/bin/build/CMakeFiles/edit_cache.dir
 /home/uladzislau/Desktop/aip/project_cpp/bin/build/CMakeFiles/rebuild_cache.dir

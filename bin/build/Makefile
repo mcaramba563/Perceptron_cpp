@@ -198,6 +198,19 @@ model_tests/fast:
 .PHONY : model_tests/fast
 
 #=============================================================================
+# Target rules for targets named app_tests
+
+# Build rule for target.
+app_tests: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 app_tests
+.PHONY : app_tests
+
+# fast build rule for target.
+app_tests/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app_tests.dir/build.make CMakeFiles/app_tests.dir/build
+.PHONY : app_tests/fast
+
+#=============================================================================
 # Target rules for targets named doctest_with_main
 
 # Build rule for target.
@@ -216,6 +229,7 @@ app.o: app.cpp.o
 # target to build an object file
 app.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/model_try.dir/build.make CMakeFiles/model_try.dir/app.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app_tests.dir/build.make CMakeFiles/app_tests.dir/app.cpp.o
 .PHONY : app.cpp.o
 
 app.i: app.cpp.i
@@ -224,6 +238,7 @@ app.i: app.cpp.i
 # target to preprocess a source file
 app.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/model_try.dir/build.make CMakeFiles/model_try.dir/app.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app_tests.dir/build.make CMakeFiles/app_tests.dir/app.cpp.i
 .PHONY : app.cpp.i
 
 app.s: app.cpp.s
@@ -232,7 +247,32 @@ app.s: app.cpp.s
 # target to generate assembly for a file
 app.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/model_try.dir/build.make CMakeFiles/model_try.dir/app.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app_tests.dir/build.make CMakeFiles/app_tests.dir/app.cpp.s
 .PHONY : app.cpp.s
+
+app_tests.o: app_tests.cpp.o
+.PHONY : app_tests.o
+
+# target to build an object file
+app_tests.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app_tests.dir/build.make CMakeFiles/app_tests.dir/app_tests.cpp.o
+.PHONY : app_tests.cpp.o
+
+app_tests.i: app_tests.cpp.i
+.PHONY : app_tests.i
+
+# target to preprocess a source file
+app_tests.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app_tests.dir/build.make CMakeFiles/app_tests.dir/app_tests.cpp.i
+.PHONY : app_tests.cpp.i
+
+app_tests.s: app_tests.cpp.s
+.PHONY : app_tests.s
+
+# target to generate assembly for a file
+app_tests.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app_tests.dir/build.make CMakeFiles/app_tests.dir/app_tests.cpp.s
+.PHONY : app_tests.cpp.s
 
 model.o: model.cpp.o
 .PHONY : model.o
@@ -241,6 +281,7 @@ model.o: model.cpp.o
 model.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/model_try.dir/build.make CMakeFiles/model_try.dir/model.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/model_tests.dir/build.make CMakeFiles/model_tests.dir/model.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app_tests.dir/build.make CMakeFiles/app_tests.dir/model.cpp.o
 .PHONY : model.cpp.o
 
 model.i: model.cpp.i
@@ -250,6 +291,7 @@ model.i: model.cpp.i
 model.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/model_try.dir/build.make CMakeFiles/model_try.dir/model.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/model_tests.dir/build.make CMakeFiles/model_tests.dir/model.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app_tests.dir/build.make CMakeFiles/app_tests.dir/model.cpp.i
 .PHONY : model.cpp.i
 
 model.s: model.cpp.s
@@ -259,6 +301,7 @@ model.s: model.cpp.s
 model.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/model_try.dir/build.make CMakeFiles/model_try.dir/model.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/model_tests.dir/build.make CMakeFiles/model_tests.dir/model.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app_tests.dir/build.make CMakeFiles/app_tests.dir/model.cpp.s
 .PHONY : model.cpp.s
 
 model_tests.o: model_tests.cpp.o
@@ -322,12 +365,16 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... test"
+	@echo "... app_tests"
 	@echo "... doctest_with_main"
 	@echo "... model_tests"
 	@echo "... model_try"
 	@echo "... app.o"
 	@echo "... app.i"
 	@echo "... app.s"
+	@echo "... app_tests.o"
+	@echo "... app_tests.i"
+	@echo "... app_tests.s"
 	@echo "... model.o"
 	@echo "... model.i"
 	@echo "... model.s"
