@@ -6,8 +6,8 @@
 App::App() {
     nn = Perceptron();
     defaultModel = Perceptron();
-    // defaultModel.load_model("../../models/default_model");
-    // nn.load_model("../../models/default_model");
+    defaultModel.load_model("../../models/default_model");
+    nn.load_model("../../models/default_model");
 }
 
 int App::do_predict(const std::vector<std::string> args) {
