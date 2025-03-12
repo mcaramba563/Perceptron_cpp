@@ -22,7 +22,7 @@ int main() {
         if (args[0] == "exit")
             break;
         if (args[0] == "predict") {
-            app.do_predict(args);
+            std::cout << app.do_predict(args) << "\n";
             continue;
         } else if (args[0] == "train") {
             app.do_train(args);

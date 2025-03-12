@@ -17,9 +17,9 @@ public:
     void do_load_default_model();
     void reset_training();
 
-private:
     Perceptron defaultModel;
     Perceptron nn;
+private:
     bool file_exists(std::string const& path);
 };
 
