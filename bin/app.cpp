@@ -22,8 +22,9 @@ int App::do_predict(const std::vector<std::string> args) {
         return -1;
     }
 
-    std::cout << ans << std::endl;
-    return 0;
+    //std::cout << ans << std::endl;
+    //return 0;
+    return ans;
 }
 
 int App::do_train(const std::vector<std::string> args) {

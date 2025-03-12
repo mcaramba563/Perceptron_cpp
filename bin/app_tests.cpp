@@ -1,4 +1,5 @@
 #include "app.h"
+#include <stdexcept>
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest/doctest.h"
 
@@ -28,40 +29,33 @@ TEST_CASE("Test valid predictions") {
 
     CHECK(correct_predictions == 10);
 }
-/*
+
 TEST_CASE("Test incorrect predictions") {
     App app_instance;
-    CHECK(app_instance.do_predict({"predict", "../../images/mnist_png/test/9asdad/7.png"}) == -1);
+    
     CHECK(app_instance.do_predict({"predict"}) == -1);
+    CHECK_THROWS_AS(app_instance.do_predict({"predict", "../../images/mnist_png/test/9asdad/7.png"}), std::exception);
 }
 
 TEST_CASE("Test incorrect training cases") {
     App app_instance;
-    CHECK(app_instance.do_train({"train", "tests/file_with_names.txt"}) == -1);
-    CHECK(app_instance.do_train({"train", "tests/file_with_names.txt", "2"}) == -1);
-    CHECK(app_instance.do_train({"train", "tests/file_with_names.txt", "-1", "0.01"}) == -1);
+    CHECK(app_instance.do_train({"train", "../test_train.txt"}) == -1);
+    CHECK(app_instance.do_train({"train", "../test_train.txt", "2"}) == -1);
+    CHECK(app_instance.do_train({"train", "../test_train.txt", "-1", "0.01"}) == -1);
     CHECK(app_instance.do_train({"train", "asd.txt", "1", "0.01"}) == -1);
     CHECK(app_instance.do_train({"train", "tests/file_with_incorrect_names.txt", "1", "0.01"}) == -1);
 }
 
+
 TEST_CASE("Test correct training") {
     App app_instance;
-    CHECK(app_instance.do_train({"train", "tests/file_with_names.txt", "1", "0.01"}) == 0);
-}
-
-TEST_CASE("Test training on random ../../images") {
-    App app_instance;
-    CHECK(app_instance.do_train_on_random_../../images({"train_on_random_images", "100"}) == -1);
-    CHECK(app_instance.do_train_on_random_../../images({"train_on_random_images", "100", "1"}) == -1);
-    CHECK(app_instance.do_train_on_random_../../images({"train_on_random_images", "100", "0", "0.01"}) == -1);
-    CHECK(app_instance.do_train_on_random_../../images({"train_on_random_images", "0", "10", "0.01"}) == -1);
-    CHECK(app_instance.do_train_on_random_../../images({"train_on_random_images", "10", "10", "0.01"}) == 0);
+    CHECK(app_instance.do_train({"train", "../test_train.txt", "1", "0.01"}) == 0);
 }
 
 TEST_CASE("Test custom model creation and training") {
     App app_instance;
     CHECK(app_instance.do_make_custom_model({"make_custom_model", "400", "256", "128"}) == 0);
-    CHECK(app_instance.do_train_on_random_../../images({"train_on_random_images", "20000", "2", "0.01"}) == 0);
+    CHECK(app_instance.do_train({"train", "../test_train.txt", "2", "0.01"}) == 0);
 
     std::vector<std::pair<std::vector<std::string>, int>> test_cases = {
         {{"predict", "../../images/mnist_png/test/0/10.png"}, 0},
@@ -88,42 +82,45 @@ TEST_CASE("Test custom model creation and training") {
 
 TEST_CASE("Test saving and loading model") {
     App app_instance;
-    CHECK(app_instance.do_save_model({"save_model", "models/folder2/saved_model.npy"}) == 0);
-    CHECK(app_instance.do_load_custom_model({"load_custom_model", "models/folder2/saved_model.npy"}) == 0);
+    CHECK(app_instance.do_save_model({"save_model", "../../models/default_model"}) == 0);
+    CHECK(app_instance.do_load_custom_model({"load_custom_model", "../../models/default_model"}) == 0);
 }
 
 TEST_CASE("Test model reinitialization") {
     App app_instance;
-    NeuralNetwork previous_nn = app_instance.nn;
+    Perceptron previous_nn = app_instance.nn;
 
     app_instance.do_make_custom_model({"make_custom_model", "400", "200", "100"});
-    CHECK(app_instance.nn != previous_nn);
 
     app_instance.nn = previous_nn;
 
     bool weights_match = true;
-    for (size_t i = 0; i < app_instance.nn.weights_input_hidden.size(); ++i) {
-        if (!arma::approx_equal(app_instance.nn.weights_input_hidden[i], previous_nn.weights_input_hidden[i], "absdiff", 1e-6)) {
+    auto weights_input_hidden = app_instance.nn.get_weights_input_hidden();
+    auto previous_weights_input_hidden = previous_nn.get_weights_input_hidden();
+    for (size_t i = 0; i < weights_input_hidden.size(); ++i) {
+        if (!arma::approx_equal(weights_input_hidden[i], previous_weights_input_hidden[i], "absdiff", 1e-6)) {
             weights_match = false;
             break;
         }
     }
+    auto weights_output_hidden = app_instance.nn.get_weights_output_hidden();
+    auto previous_weights_output_hidden = previous_nn.get_weights_output_hidden();
     CHECK(weights_match);
-    CHECK(arma::approx_equal(app_instance.nn.weights_output_hidden, previous_nn.weights_output_hidden, "absdiff", 1e-6));
+    CHECK(arma::approx_equal(weights_output_hidden, previous_weights_output_hidden, "absdiff", 1e-6));
 }
 
 TEST_CASE("Test edge cases for training") {
     App app_instance;
-    CHECK(app_instance.do_train_on_random_../../images({"train_on_random_images", "10", "-1", "0.01"}) == -1);
-    CHECK(app_instance.do_train_on_random_../../images({"train_on_random_images", "10", "1", "-0.01"}) == -1);
-    CHECK(app_instance.do_train_on_random_../../images({"train_on_random_images", "10", "1", "0"}) == -1);
+    CHECK(app_instance.do_train({"train", "test_train.txt", "10", "-1", "0.01"}) == -1);
+    CHECK(app_instance.do_train({"train", "test_train.txt", "10", "1", "-0.01"}) == -1);
+    CHECK(app_instance.do_train({"train", "test_train.txt", "10", "1", "0"}) == -1);
 }
 
 TEST_CASE("Test loading model and making predictions") {
     App app_instance;
     app_instance.do_load_default_model();
-    app_instance.do_save_model({"save_model", "models/test_model.npy"});
-    CHECK(app_instance.do_load_custom_model({"load_custom_model", "models/test_model.npy"}) == 0);
+    app_instance.do_save_model({"save_model", "../../models/tmp_model"});
+    CHECK(app_instance.do_load_custom_model({"load_custom_model", "../../models/tmp_model"}) == 0);
 
     std::vector<std::pair<std::vector<std::string>, int>> test_cases = {
         {{"predict", "../../images/mnist_png/test/0/10.png"}, 0},
@@ -147,4 +144,4 @@ TEST_CASE("Test loading model and making predictions") {
 
     CHECK(correct_predictions >= 8);
 }
-*/
+
