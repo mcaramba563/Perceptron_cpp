@@ -5,6 +5,10 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 #endif
+Perceptron::Perceptron(std::string path) {
+    load_model(path);
+}
+
 Perceptron::Perceptron(int input_size, std::vector<int> hidden_layers_size, int output_size, double learning_rate, int epochs)
     : input_size(input_size), hidden_layers_size(hidden_layers_size), output_size(output_size), learning_rate(learning_rate), epochs(epochs) {
     
@@ -41,18 +45,11 @@ arma::mat Perceptron::tanh_derivative(const arma::mat& x) {
 
 arma::mat Perceptron::softmax(const arma::mat& x) {
     arma::mat exp_x = arma::exp(x - as_scalar(arma::max(x, 1)));
-    // std::cout << x << " debug first\n";
-    // std::cout << arma::max(x, 1) << " debug second\n";
     return exp_x / as_scalar(arma::sum(exp_x, 1));
 }
 
 arma::mat Perceptron::forward(const arma::mat& X) {
     this->X = X;
-    // std::cout << input_size << " ";
-    // for (int cur : hidden_layers_size)
-    //     std::cout << cur << " ";
-    // std::cout << output_size << "\n";
-
    
     hidden_layer_input.clear();
     hidden_layer_output.clear();
@@ -67,7 +64,6 @@ arma::mat Perceptron::forward(const arma::mat& X) {
     }
 
     final_hidden_layer_output = tanh_activation(hidden_layer_output.back() * weights_output_hidden);
-    // return final_hidden_layer_output;
     return softmax(final_hidden_layer_output);
 }
 
@@ -105,13 +101,15 @@ void Perceptron::backprop(const int y_train) {
 void Perceptron::train(const std::vector<arma::mat>& X_train, const std::vector<int>& y_train, int epochs, double learning_rate) {
     this->epochs = epochs;
     this->learning_rate = learning_rate;
-    std::cout << "Starting training\n";
+    if (error_output)
+        std::cout << "Starting training\n";
     for (int epoch = 0; epoch < epochs; ++epoch) {
         for (size_t ind = 0; ind < X_train.size(); ++ind) {
             forward(X_train[ind]);
             backprop(y_train[ind]);
         }
-        std::cout << "Epoch " << epoch + 1 << "/" << epochs << " completed" << std::endl;
+        if (error_output)
+            std::cout << "Epoch " << epoch + 1 << "/" << epochs << " completed" << std::endl;
     }
 }
 
@@ -134,7 +132,6 @@ void Perceptron::save_model(const std::string& path) {
         model_structure(0,  i + 2) = hidden_layers_size[i];
     }
     model_structure(0, hidden_layers_size.size() + 2) = output_size;
-    // std::cout << model_structure << "\n\n\n";
     save_array.insert_rows(0, arma::vectorise(model_structure)); 
 
     save_array.insert_rows(save_array.n_rows, arma::vectorise(weights_output_hidden));
@@ -162,7 +159,7 @@ void Perceptron::load_model(const std::string& path) {
     arma::mat model_structure = save_array.rows(offset, offset + cur_hidden_layers_size + 1);
     model_structure.reshape(1, cur_hidden_layers_size + 2);
     offset += cur_hidden_layers_size + 2;
-    // std::cout << model_structure << "\n\n\n";
+    
     input_size = model_structure(0, 0);
     hidden_layers_size.clear();
     for (size_t i = 1; i < model_structure.n_cols - 1; ++i) {
@@ -215,7 +212,8 @@ bool Perceptron::image_path_correct(const std::string& path) {
 arma::mat Perceptron::read_image(const std::string& path, int image_bbp) {
     int width, height, bpp;
     if (!image_path_correct(path)) {
-        std::cout << "Invalid image path: " << path << "\n";
+        if (error_output)
+            std::cout << "Invalid image path: " << path << "\n";
         throw std::runtime_error{"loading image error"};
     }    
     uint8_t* image = stbi_load(path.c_str(), &width, &height, &bpp, image_bbp);

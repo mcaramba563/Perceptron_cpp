@@ -4,6 +4,8 @@
 
 TEST_CASE("Test weight initialization") {
     Perceptron perceptron;
+    perceptron.error_output = false;
+
     perceptron.gen_weights();
     perceptron.bias_gen();
 
@@ -30,6 +32,7 @@ TEST_CASE("Test weight initialization") {
 
 TEST_CASE("Test bias initialization") {
     Perceptron perceptron;
+    perceptron.error_output = false;
     perceptron.bias_gen();
 
     const auto bias_input_hidden = perceptron.get_bias_input_hidden();
@@ -45,6 +48,7 @@ TEST_CASE("Test bias initialization") {
 
 TEST_CASE("Test tanh activation function") {
     Perceptron perceptron;
+    perceptron.error_output = false;
     arma::vec x = {-1, 0, 1};
     arma::vec expected = arma::tanh(x);
     
@@ -53,6 +57,7 @@ TEST_CASE("Test tanh activation function") {
 
 TEST_CASE("Test tanh derivative") {
     Perceptron perceptron;
+    perceptron.error_output = false;
     arma::vec x = {-1, 0, 1};
     arma::vec expected = 1 - arma::square(arma::tanh(x));
 
@@ -61,6 +66,7 @@ TEST_CASE("Test tanh derivative") {
 
 TEST_CASE("Test softmax function") {
     Perceptron perceptron;
+    perceptron.error_output = false;
     arma::mat x = {1, 2, 3};
     arma::mat expected = {0.0900, 0.2447, 0.6652};
     CHECK(arma::approx_equal(perceptron.softmax(x), expected, "absdiff", 1e-4));
@@ -68,6 +74,7 @@ TEST_CASE("Test softmax function") {
 
 TEST_CASE("Test forward propagation") {
     Perceptron perceptron;
+    perceptron.error_output = false;
     arma::mat X = arma::randu<arma::mat>(1, 28*28);
 
     arma::mat output = perceptron.forward(X);
@@ -77,6 +84,7 @@ TEST_CASE("Test forward propagation") {
 
 TEST_CASE("Test backpropagation") {
     Perceptron perceptron;
+    perceptron.error_output = false;
     arma::mat X = arma::randu<arma::mat>(1, perceptron.get_input_size());
 
     perceptron.forward(X);
@@ -85,6 +93,7 @@ TEST_CASE("Test backpropagation") {
 
 TEST_CASE("Test training function") {
     Perceptron perceptron;
+    perceptron.error_output = false;
     std::vector<arma::mat> X;
     for (int i = 0;i < 5;i++)
         X.push_back(arma::randu<arma::mat>(1, perceptron.get_input_size()));
@@ -94,6 +103,7 @@ TEST_CASE("Test training function") {
 
 TEST_CASE("Test prediction function") {
     Perceptron perceptron;
+    perceptron.error_output = false;
     arma::mat X = arma::randu<arma::mat>(1, perceptron.get_input_size());
 
     int prediction = perceptron.predict(X);
@@ -103,6 +113,7 @@ TEST_CASE("Test prediction function") {
 
 TEST_CASE("Test save and load model") {
     Perceptron perceptron;
+    perceptron.error_output = false;
     std::string model_path = "../../models/tmp_model";
 
     perceptron.save_model(model_path);

@@ -29,7 +29,7 @@ class Perceptron {
         bool image_path_correct(const std::string& path); 
     public:
         Perceptron(int input_size = 28 * 28, std::vector<int> hidden_layers_size = {400, 256, 128}, int output_size = 10, double learning_rate = 0.01, int epochs = 1);
-        
+        Perceptron(std::string path);
         void gen_weights();
         void bias_gen();
         arma::mat tanh_activation(const arma::mat& x);
@@ -57,4 +57,6 @@ class Perceptron {
         const arma::mat get_final_hidden_layer_output() const { return final_hidden_layer_output; }
         const int get_input_size() { return input_size; }
         const int get_output_size() { return output_size; }
+        
+        bool error_output = true;
 };
