@@ -1,0 +1,43 @@
+\doxysection{app.\+h}
+\hypertarget{app_8h_source}{}\label{app_8h_source}\index{bin/app.h@{bin/app.h}}
+\mbox{\hyperlink{app_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ APP\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ APP\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{model_8h}{model.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classApp}{App}}\ \{}
+\DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{classApp_acb8cbf3e285b91d0170ffe87df5989c5}{App}}();}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{classApp_acb8cbf3e285b91d0170ffe87df5989c5}{App}}(\textcolor{keywordtype}{bool}\ cur\_error\_output);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classApp_a64bfa4ff910602de73ff798f1bcd46b6}{do\_predict}}(\textcolor{keyword}{const}\ std::vector<std::string>\ args);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classApp_a882a76725b6a6f07485022dc9bf9e091}{do\_train}}(\textcolor{keyword}{const}\ std::vector<std::string>\ args);}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classApp_a1f00c121307efce0114e15cc070f07c2}{do\_make\_custom\_model}}(\textcolor{keyword}{const}\ std::vector<std::string>\ args);}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classApp_a5b9602473edc9c73ce125a73f74610d1}{do\_load\_custom\_model}}(\textcolor{keyword}{const}\ std::vector<std::string>\ args);}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classApp_af8d205aa04d696d062d0bb7ddc710aa7}{do\_save\_model}}(\textcolor{keyword}{const}\ std::vector<std::string>\ args);}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classApp_a18a9b2f648c275f5e84009e80cf56942}{do\_load\_default\_model}}();}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classApp_a39afa3b1b8097024910a86189b4ee900}{reset\_training}}();}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \ \ \mbox{\hyperlink{classPerceptron}{Perceptron}}\ \mbox{\hyperlink{classApp_ad90792de286a5a85a8bed40ef4dbd977}{defaultModel}};\ \ }
+\DoxyCodeLine{00094\ \ \ \ \ \mbox{\hyperlink{classPerceptron}{Perceptron}}\ \mbox{\hyperlink{classApp_abf178bf0d7d049f6dd0843f2a27de42b}{nn}};\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classApp_a737d1367a58b8fa90a6f50817207f1b6}{error\_output}}\ =\ \textcolor{keyword}{true};\ }
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordtype}{bool}\ file\_exists(\textcolor{keyword}{const}\ std::string\&\ path);}
+\DoxyCodeLine{00105\ \};}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ APP\_H}}
+
+\end{DoxyCode}

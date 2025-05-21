@@ -3,7 +3,10 @@
 #include <fstream>
 #include <locale>
 #include <sstream>
-
+/**
+ * \file
+ * \brief Implementation of App class
+ */
 App::App() {
     nn = Perceptron();
     defaultModel = Perceptron();

@@ -1,0 +1,373 @@
+\doxysection{Perceptron Class Reference}
+\hypertarget{classPerceptron}{}\label{classPerceptron}\index{Perceptron@{Perceptron}}
+
+
+A simple multi-\/layer perceptron implementation using Armadillo for matrix operations.  
+
+
+
+
+{\ttfamily \#include $<$model.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPerceptron_a64443a7feefd43cc4e6ef446522530d3}{Perceptron}} (int input\+\_\+size=28 \texorpdfstring{$\ast$}{*}28, std\+::vector$<$ int $>$ hidden\+\_\+layers\+\_\+size=\{400, 256, 128\}, int output\+\_\+size=10, double learning\+\_\+rate=0.\+01, int epochs=1)
+\begin{DoxyCompactList}\small\item\em Constructs a perceptron with specified architecture. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPerceptron_ad5fee0c61ed81414e49d9ace4db41374}{Perceptron}} (const std\+::string \&path)
+\begin{DoxyCompactList}\small\item\em Constructs a perceptron and loads weights/biases from file. \end{DoxyCompactList}\item 
+\Hypertarget{classPerceptron_aa56e88363310deddd1b83bea60dbc9e8}\label{classPerceptron_aa56e88363310deddd1b83bea60dbc9e8} 
+void {\bfseries gen\+\_\+weights} ()
+\begin{DoxyCompactList}\small\item\em Initializes random weights for all layers. \end{DoxyCompactList}\item 
+\Hypertarget{classPerceptron_a652a87df4f58c5dd5db2048828e171f5}\label{classPerceptron_a652a87df4f58c5dd5db2048828e171f5} 
+void {\bfseries bias\+\_\+gen} ()
+\begin{DoxyCompactList}\small\item\em Initializes random biases for all hidden layers. \end{DoxyCompactList}\item 
+arma\+::mat \mbox{\hyperlink{classPerceptron_abe2462491eab7c50ab28896690c8de4f}{tanh\+\_\+activation}} (const arma\+::mat \&x)
+\begin{DoxyCompactList}\small\item\em Applies the tanh activation function element-\/wise. \end{DoxyCompactList}\item 
+arma\+::mat \mbox{\hyperlink{classPerceptron_a2ca4805686aabe997a61c1564e5fccb3}{tanh\+\_\+derivative}} (const arma\+::mat \&x)
+\begin{DoxyCompactList}\small\item\em Computes the derivative of the tanh activation. \end{DoxyCompactList}\item 
+arma\+::mat \mbox{\hyperlink{classPerceptron_af127d7cd994c7c9bc6af1da2bacf1cdb}{softmax}} (const arma\+::mat \&x)
+\begin{DoxyCompactList}\small\item\em Applies the softmax function to the input. \end{DoxyCompactList}\item 
+arma\+::mat \mbox{\hyperlink{classPerceptron_ac52b51bb6c27773d81d1248b4f8d4bea}{forward}} (const arma\+::mat \&X)
+\begin{DoxyCompactList}\small\item\em Performs a forward pass through the network. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPerceptron_a0dcf1dcbd79fa59bff187fc0bc899ab4}{backprop}} (int y\+\_\+train)
+\begin{DoxyCompactList}\small\item\em Performs backpropagation for a single example. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPerceptron_af754712020d0dbdf09569527f2f64e59}{train}} (const std\+::vector$<$ arma\+::mat $>$ \&X\+\_\+train, const std\+::vector$<$ int $>$ \&y\+\_\+train, int epochs, double learning\+\_\+rate)
+\begin{DoxyCompactList}\small\item\em Trains the model on a dataset. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classPerceptron_a170b7cf1ebfaf7a93f8563417c694cd5}{predict}} (const arma\+::mat \&X)
+\begin{DoxyCompactList}\small\item\em Predicts the class label for given input features. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classPerceptron_acaaab8ef2228d3aded453dad8db28bfe}{predict\+\_\+image}} (const std\+::string \&path)
+\begin{DoxyCompactList}\small\item\em Predicts the class of an image. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPerceptron_a839c707c81134df6ee331b1f740e8447}{save\+\_\+model}} (const std\+::string \&path)
+\begin{DoxyCompactList}\small\item\em Saves the model structure, weights, and biases to file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPerceptron_a4db929a9a4e493a6d35802840973cb05}{load\+\_\+model}} (const std\+::string \&path)
+\begin{DoxyCompactList}\small\item\em Loads model structure, weights, and biases from file. \end{DoxyCompactList}\item 
+arma\+::mat \mbox{\hyperlink{classPerceptron_a84fd443bb4d22e836985415d4dd6bca4}{read\+\_\+image}} (const std\+::string \&path, int image\+\_\+bbp=1)
+\begin{DoxyCompactList}\small\item\em Reads a single image file into a matrix. \end{DoxyCompactList}\item 
+std\+::vector$<$ arma\+::mat $>$ \mbox{\hyperlink{classPerceptron_a9ae7f00175e0af70bd45f0936d735bb3}{read\+\_\+images}} (const std\+::vector$<$ std\+::string $>$ \&pathes)
+\begin{DoxyCompactList}\small\item\em Reads multiple images into a vector of matrices. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPerceptron_a096acbfc874a80a43354bca5767bee50}{train\+\_\+on\+\_\+specific\+\_\+images}} (const std\+::string \&path\+\_\+to\+\_\+file, int cur\+\_\+epochs=-\/100, double cur\+\_\+learning\+\_\+rate=-\/100)
+\begin{DoxyCompactList}\small\item\em Trains on images specified by a file containing paths and labels. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{Indent}\textbf{ Getters}\par
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classPerceptron_a8d2c6a187d12b605531928bc2eb70f46}\label{classPerceptron_a8d2c6a187d12b605531928bc2eb70f46} 
+const std\+::vector$<$ int $>$ {\bfseries get\+\_\+hidden\+\_\+layers\+\_\+size} () const
+\item 
+\Hypertarget{classPerceptron_a879834d5548cb2bc062c2578cb1807ca}\label{classPerceptron_a879834d5548cb2bc062c2578cb1807ca} 
+const std\+::vector$<$ arma\+::mat $>$ {\bfseries get\+\_\+weights\+\_\+input\+\_\+hidden} () const
+\item 
+\Hypertarget{classPerceptron_acc9b0d89e3c92afcd3c419c0e5504a79}\label{classPerceptron_acc9b0d89e3c92afcd3c419c0e5504a79} 
+const arma\+::mat \& {\bfseries get\+\_\+weights\+\_\+output\+\_\+hidden} () const
+\item 
+\Hypertarget{classPerceptron_a18277f8409d5191d5178df567b55bde1}\label{classPerceptron_a18277f8409d5191d5178df567b55bde1} 
+const std\+::vector$<$ arma\+::mat $>$ {\bfseries get\+\_\+bias\+\_\+input\+\_\+hidden} () const
+\item 
+\Hypertarget{classPerceptron_a0e17584c7df5caf6205f77675a05beb1}\label{classPerceptron_a0e17584c7df5caf6205f77675a05beb1} 
+const std\+::vector$<$ arma\+::mat $>$ {\bfseries get\+\_\+hidden\+\_\+layer\+\_\+input} () const
+\item 
+\Hypertarget{classPerceptron_a255fb85f663fc936a963e6aecf080b26}\label{classPerceptron_a255fb85f663fc936a963e6aecf080b26} 
+const std\+::vector$<$ arma\+::mat $>$ {\bfseries get\+\_\+hidden\+\_\+layer\+\_\+output} () const
+\item 
+\Hypertarget{classPerceptron_a9be190916ff280ce51826476faa418b9}\label{classPerceptron_a9be190916ff280ce51826476faa418b9} 
+const arma\+::mat {\bfseries get\+\_\+final\+\_\+hidden\+\_\+layer\+\_\+output} () const
+\item 
+\Hypertarget{classPerceptron_a213b90e0935786a938387d58165c9092}\label{classPerceptron_a213b90e0935786a938387d58165c9092} 
+int {\bfseries get\+\_\+input\+\_\+size} () const
+\item 
+\Hypertarget{classPerceptron_a298e8ce78959ce35b51ca3250cfe28b2}\label{classPerceptron_a298e8ce78959ce35b51ca3250cfe28b2} 
+int {\bfseries get\+\_\+output\+\_\+size} () const
+\end{DoxyCompactItemize}
+\end{Indent}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classPerceptron_a289f27298645deebc2481d0ec2496d23}\label{classPerceptron_a289f27298645deebc2481d0ec2496d23} 
+bool {\bfseries error\+\_\+output} = true
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A simple multi-\/layer perceptron implementation using Armadillo for matrix operations. 
+
+Provides methods for training, prediction, saving/loading the model, and image-\/based data handling. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classPerceptron_a64443a7feefd43cc4e6ef446522530d3}\label{classPerceptron_a64443a7feefd43cc4e6ef446522530d3} 
+\index{Perceptron@{Perceptron}!Perceptron@{Perceptron}}
+\index{Perceptron@{Perceptron}!Perceptron@{Perceptron}}
+\doxysubsubsection{\texorpdfstring{Perceptron()}{Perceptron()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Perceptron\+::\+Perceptron (\begin{DoxyParamCaption}\item[{int}]{input\+\_\+size = {\ttfamily 28~\texorpdfstring{$\ast$}{*}~28},  }\item[{std\+::vector$<$ int $>$}]{hidden\+\_\+layers\+\_\+size = {\ttfamily \{400,~256,~128\}},  }\item[{int}]{output\+\_\+size = {\ttfamily 10},  }\item[{double}]{learning\+\_\+rate = {\ttfamily 0.01},  }\item[{int}]{epochs = {\ttfamily 1} }\end{DoxyParamCaption})}
+
+
+
+Constructs a perceptron with specified architecture. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+\_\+size} & Number of input neurons (features) \\
+\hline
+{\em hidden\+\_\+layers\+\_\+size} & Vector specifying number of neurons in each hidden layer \\
+\hline
+{\em output\+\_\+size} & Number of output neurons (classes) \\
+\hline
+{\em learning\+\_\+rate} & Learning rate for weight updates \\
+\hline
+{\em epochs} & Number of epochs to train \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classPerceptron_ad5fee0c61ed81414e49d9ace4db41374}\label{classPerceptron_ad5fee0c61ed81414e49d9ace4db41374} 
+\index{Perceptron@{Perceptron}!Perceptron@{Perceptron}}
+\index{Perceptron@{Perceptron}!Perceptron@{Perceptron}}
+\doxysubsubsection{\texorpdfstring{Perceptron()}{Perceptron()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Perceptron\+::\+Perceptron (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path }\end{DoxyParamCaption})}
+
+
+
+Constructs a perceptron and loads weights/biases from file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & Path to the saved model file \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classPerceptron_a0dcf1dcbd79fa59bff187fc0bc899ab4}\label{classPerceptron_a0dcf1dcbd79fa59bff187fc0bc899ab4} 
+\index{Perceptron@{Perceptron}!backprop@{backprop}}
+\index{backprop@{backprop}!Perceptron@{Perceptron}}
+\doxysubsubsection{\texorpdfstring{backprop()}{backprop()}}
+{\footnotesize\ttfamily void Perceptron\+::backprop (\begin{DoxyParamCaption}\item[{int}]{y\+\_\+train }\end{DoxyParamCaption})}
+
+
+
+Performs backpropagation for a single example. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em y\+\_\+train} & True class label index \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classPerceptron_ac52b51bb6c27773d81d1248b4f8d4bea}\label{classPerceptron_ac52b51bb6c27773d81d1248b4f8d4bea} 
+\index{Perceptron@{Perceptron}!forward@{forward}}
+\index{forward@{forward}!Perceptron@{Perceptron}}
+\doxysubsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily arma\+::mat Perceptron\+::forward (\begin{DoxyParamCaption}\item[{const arma\+::mat \&}]{X }\end{DoxyParamCaption})}
+
+
+
+Performs a forward pass through the network. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em X} & Input features as a row vector or matrix \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Output probabilities as a row vector or matrix 
+\end{DoxyReturn}
+\Hypertarget{classPerceptron_a4db929a9a4e493a6d35802840973cb05}\label{classPerceptron_a4db929a9a4e493a6d35802840973cb05} 
+\index{Perceptron@{Perceptron}!load\_model@{load\_model}}
+\index{load\_model@{load\_model}!Perceptron@{Perceptron}}
+\doxysubsubsection{\texorpdfstring{load\_model()}{load\_model()}}
+{\footnotesize\ttfamily void Perceptron\+::load\+\_\+model (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path }\end{DoxyParamCaption})}
+
+
+
+Loads model structure, weights, and biases from file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & File path to load the model from \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classPerceptron_a170b7cf1ebfaf7a93f8563417c694cd5}\label{classPerceptron_a170b7cf1ebfaf7a93f8563417c694cd5} 
+\index{Perceptron@{Perceptron}!predict@{predict}}
+\index{predict@{predict}!Perceptron@{Perceptron}}
+\doxysubsubsection{\texorpdfstring{predict()}{predict()}}
+{\footnotesize\ttfamily int Perceptron\+::predict (\begin{DoxyParamCaption}\item[{const arma\+::mat \&}]{X }\end{DoxyParamCaption})}
+
+
+
+Predicts the class label for given input features. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em X} & Input features as a row vector \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Predicted class index 
+\end{DoxyReturn}
+\Hypertarget{classPerceptron_acaaab8ef2228d3aded453dad8db28bfe}\label{classPerceptron_acaaab8ef2228d3aded453dad8db28bfe} 
+\index{Perceptron@{Perceptron}!predict\_image@{predict\_image}}
+\index{predict\_image@{predict\_image}!Perceptron@{Perceptron}}
+\doxysubsubsection{\texorpdfstring{predict\_image()}{predict\_image()}}
+{\footnotesize\ttfamily int Perceptron\+::predict\+\_\+image (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path }\end{DoxyParamCaption})}
+
+
+
+Predicts the class of an image. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & File path to the image \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Predicted class index, or -\/1 if file is invalid 
+\end{DoxyReturn}
+\Hypertarget{classPerceptron_a84fd443bb4d22e836985415d4dd6bca4}\label{classPerceptron_a84fd443bb4d22e836985415d4dd6bca4} 
+\index{Perceptron@{Perceptron}!read\_image@{read\_image}}
+\index{read\_image@{read\_image}!Perceptron@{Perceptron}}
+\doxysubsubsection{\texorpdfstring{read\_image()}{read\_image()}}
+{\footnotesize\ttfamily arma\+::mat Perceptron\+::read\+\_\+image (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path,  }\item[{int}]{image\+\_\+bbp = {\ttfamily 1} }\end{DoxyParamCaption})}
+
+
+
+Reads a single image file into a matrix. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & File path to the image \\
+\hline
+{\em image\+\_\+bbp} & Bytes per pixel (default = 1) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Image data as an Armadillo matrix 
+\end{DoxyReturn}
+\Hypertarget{classPerceptron_a9ae7f00175e0af70bd45f0936d735bb3}\label{classPerceptron_a9ae7f00175e0af70bd45f0936d735bb3} 
+\index{Perceptron@{Perceptron}!read\_images@{read\_images}}
+\index{read\_images@{read\_images}!Perceptron@{Perceptron}}
+\doxysubsubsection{\texorpdfstring{read\_images()}{read\_images()}}
+{\footnotesize\ttfamily std\+::vector$<$ arma\+::mat $>$ Perceptron\+::read\+\_\+images (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$ \&}]{pathes }\end{DoxyParamCaption})}
+
+
+
+Reads multiple images into a vector of matrices. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pathes} & Vector of image file paths \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector of image data matrices 
+\end{DoxyReturn}
+\Hypertarget{classPerceptron_a839c707c81134df6ee331b1f740e8447}\label{classPerceptron_a839c707c81134df6ee331b1f740e8447} 
+\index{Perceptron@{Perceptron}!save\_model@{save\_model}}
+\index{save\_model@{save\_model}!Perceptron@{Perceptron}}
+\doxysubsubsection{\texorpdfstring{save\_model()}{save\_model()}}
+{\footnotesize\ttfamily void Perceptron\+::save\+\_\+model (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path }\end{DoxyParamCaption})}
+
+
+
+Saves the model structure, weights, and biases to file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & File path to save the model \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classPerceptron_af127d7cd994c7c9bc6af1da2bacf1cdb}\label{classPerceptron_af127d7cd994c7c9bc6af1da2bacf1cdb} 
+\index{Perceptron@{Perceptron}!softmax@{softmax}}
+\index{softmax@{softmax}!Perceptron@{Perceptron}}
+\doxysubsubsection{\texorpdfstring{softmax()}{softmax()}}
+{\footnotesize\ttfamily arma\+::mat Perceptron\+::softmax (\begin{DoxyParamCaption}\item[{const arma\+::mat \&}]{x }\end{DoxyParamCaption})}
+
+
+
+Applies the softmax function to the input. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Input matrix/vector \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Matrix/vector of probabilities summing to 1 across rows 
+\end{DoxyReturn}
+\Hypertarget{classPerceptron_abe2462491eab7c50ab28896690c8de4f}\label{classPerceptron_abe2462491eab7c50ab28896690c8de4f} 
+\index{Perceptron@{Perceptron}!tanh\_activation@{tanh\_activation}}
+\index{tanh\_activation@{tanh\_activation}!Perceptron@{Perceptron}}
+\doxysubsubsection{\texorpdfstring{tanh\_activation()}{tanh\_activation()}}
+{\footnotesize\ttfamily arma\+::mat Perceptron\+::tanh\+\_\+activation (\begin{DoxyParamCaption}\item[{const arma\+::mat \&}]{x }\end{DoxyParamCaption})}
+
+
+
+Applies the tanh activation function element-\/wise. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Input matrix/vector \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Matrix/vector after tanh activation 
+\end{DoxyReturn}
+\Hypertarget{classPerceptron_a2ca4805686aabe997a61c1564e5fccb3}\label{classPerceptron_a2ca4805686aabe997a61c1564e5fccb3} 
+\index{Perceptron@{Perceptron}!tanh\_derivative@{tanh\_derivative}}
+\index{tanh\_derivative@{tanh\_derivative}!Perceptron@{Perceptron}}
+\doxysubsubsection{\texorpdfstring{tanh\_derivative()}{tanh\_derivative()}}
+{\footnotesize\ttfamily arma\+::mat Perceptron\+::tanh\+\_\+derivative (\begin{DoxyParamCaption}\item[{const arma\+::mat \&}]{x }\end{DoxyParamCaption})}
+
+
+
+Computes the derivative of the tanh activation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Input matrix/vector (pre-\/activation) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Matrix/vector of derivatives 
+\end{DoxyReturn}
+\Hypertarget{classPerceptron_af754712020d0dbdf09569527f2f64e59}\label{classPerceptron_af754712020d0dbdf09569527f2f64e59} 
+\index{Perceptron@{Perceptron}!train@{train}}
+\index{train@{train}!Perceptron@{Perceptron}}
+\doxysubsubsection{\texorpdfstring{train()}{train()}}
+{\footnotesize\ttfamily void Perceptron\+::train (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ arma\+::mat $>$ \&}]{X\+\_\+train,  }\item[{const std\+::vector$<$ int $>$ \&}]{y\+\_\+train,  }\item[{int}]{epochs,  }\item[{double}]{learning\+\_\+rate }\end{DoxyParamCaption})}
+
+
+
+Trains the model on a dataset. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em X\+\_\+train} & Vector of input feature matrices \\
+\hline
+{\em y\+\_\+train} & Vector of class labels \\
+\hline
+{\em epochs} & Number of epochs to train \\
+\hline
+{\em learning\+\_\+rate} & Learning rate for training \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classPerceptron_a096acbfc874a80a43354bca5767bee50}\label{classPerceptron_a096acbfc874a80a43354bca5767bee50} 
+\index{Perceptron@{Perceptron}!train\_on\_specific\_images@{train\_on\_specific\_images}}
+\index{train\_on\_specific\_images@{train\_on\_specific\_images}!Perceptron@{Perceptron}}
+\doxysubsubsection{\texorpdfstring{train\_on\_specific\_images()}{train\_on\_specific\_images()}}
+{\footnotesize\ttfamily void Perceptron\+::train\+\_\+on\+\_\+specific\+\_\+images (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path\+\_\+to\+\_\+file,  }\item[{int}]{cur\+\_\+epochs = {\ttfamily -\/100},  }\item[{double}]{cur\+\_\+learning\+\_\+rate = {\ttfamily -\/100} }\end{DoxyParamCaption})}
+
+
+
+Trains on images specified by a file containing paths and labels. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path\+\_\+to\+\_\+file} & File path listing image paths and labels \\
+\hline
+{\em cur\+\_\+epochs} & Number of epochs (-\/1 to use default) \\
+\hline
+{\em cur\+\_\+learning\+\_\+rate} & Learning rate (-\/1 to use default) \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+bin/\mbox{\hyperlink{model_8h}{model.\+h}}\item 
+bin/\mbox{\hyperlink{model_8cpp}{model.\+cpp}}\end{DoxyCompactItemize}

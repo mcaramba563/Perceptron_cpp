@@ -1,0 +1,191 @@
+\doxysection{App Class Reference}
+\hypertarget{classApp}{}\label{classApp}\index{App@{App}}
+
+
+Provides a command-\/line interface for training and using a \doxylink{classPerceptron}{Perceptron} model.  
+
+
+
+
+{\ttfamily \#include $<$app.\+h$>$}
+
+
+
+Collaboration diagram for App\+:
+% FIG 0
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classApp_acb8cbf3e285b91d0170ffe87df5989c5}{App}} ()
+\begin{DoxyCompactList}\small\item\em Constructs the \doxylink{classApp}{App} with default error output enabled. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classApp_a96d71fc20732b16300fdcd4379ea7886}{App}} (bool cur\+\_\+error\+\_\+output)
+\begin{DoxyCompactList}\small\item\em Constructs the \doxylink{classApp}{App} with specified error output setting. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classApp_a64bfa4ff910602de73ff798f1bcd46b6}{do\+\_\+predict}} (const std\+::vector$<$ std\+::string $>$ args)
+\begin{DoxyCompactList}\small\item\em Predicts the class of an image given command arguments. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classApp_a882a76725b6a6f07485022dc9bf9e091}{do\+\_\+train}} (const std\+::vector$<$ std\+::string $>$ args)
+\begin{DoxyCompactList}\small\item\em Trains the current model using labeled data file. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classApp_a1f00c121307efce0114e15cc070f07c2}{do\+\_\+make\+\_\+custom\+\_\+model}} (const std\+::vector$<$ std\+::string $>$ args)
+\begin{DoxyCompactList}\small\item\em Creates a custom \doxylink{classPerceptron}{Perceptron} model with specified hidden layer sizes. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classApp_a5b9602473edc9c73ce125a73f74610d1}{do\+\_\+load\+\_\+custom\+\_\+model}} (const std\+::vector$<$ std\+::string $>$ args)
+\begin{DoxyCompactList}\small\item\em Loads a \doxylink{classPerceptron}{Perceptron} model from a file. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classApp_af8d205aa04d696d062d0bb7ddc710aa7}{do\+\_\+save\+\_\+model}} (const std\+::vector$<$ std\+::string $>$ args)
+\begin{DoxyCompactList}\small\item\em Saves the current model to a file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classApp_a18a9b2f648c275f5e84009e80cf56942}{do\+\_\+load\+\_\+default\+\_\+model}} ()
+\begin{DoxyCompactList}\small\item\em Reloads the default \doxylink{classPerceptron}{Perceptron} model from its source file. \end{DoxyCompactList}\item 
+\Hypertarget{classApp_a39afa3b1b8097024910a86189b4ee900}\label{classApp_a39afa3b1b8097024910a86189b4ee900} 
+void {\bfseries reset\+\_\+training} ()
+\begin{DoxyCompactList}\small\item\em Resets current training by copying the default model. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classApp_ad90792de286a5a85a8bed40ef4dbd977}\label{classApp_ad90792de286a5a85a8bed40ef4dbd977} 
+\mbox{\hyperlink{classPerceptron}{Perceptron}} {\bfseries default\+Model}
+\begin{DoxyCompactList}\small\item\em The default pre-\/loaded \doxylink{classPerceptron}{Perceptron} model. \end{DoxyCompactList}\item 
+\Hypertarget{classApp_abf178bf0d7d049f6dd0843f2a27de42b}\label{classApp_abf178bf0d7d049f6dd0843f2a27de42b} 
+\mbox{\hyperlink{classPerceptron}{Perceptron}} {\bfseries nn}
+\begin{DoxyCompactList}\small\item\em The current \doxylink{classPerceptron}{Perceptron} model in use. \end{DoxyCompactList}\item 
+\Hypertarget{classApp_a737d1367a58b8fa90a6f50817207f1b6}\label{classApp_a737d1367a58b8fa90a6f50817207f1b6} 
+bool {\bfseries error\+\_\+output} = true
+\begin{DoxyCompactList}\small\item\em Enable printing of error messages. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Provides a command-\/line interface for training and using a \doxylink{classPerceptron}{Perceptron} model. 
+
+The \doxylink{classApp}{App} class wraps a default and current \doxylink{classPerceptron}{Perceptron} instance, offering methods to predict, train, save/load models, and manage model configurations. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classApp_acb8cbf3e285b91d0170ffe87df5989c5}\label{classApp_acb8cbf3e285b91d0170ffe87df5989c5} 
+\index{App@{App}!App@{App}}
+\index{App@{App}!App@{App}}
+\doxysubsubsection{\texorpdfstring{App()}{App()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily App\+::\+App (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructs the \doxylink{classApp}{App} with default error output enabled. 
+
+Initializes both the default and current models by loading from the predefined file. \Hypertarget{classApp_a96d71fc20732b16300fdcd4379ea7886}\label{classApp_a96d71fc20732b16300fdcd4379ea7886} 
+\index{App@{App}!App@{App}}
+\index{App@{App}!App@{App}}
+\doxysubsubsection{\texorpdfstring{App()}{App()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily App\+::\+App (\begin{DoxyParamCaption}\item[{bool}]{cur\+\_\+error\+\_\+output }\end{DoxyParamCaption})}
+
+
+
+Constructs the \doxylink{classApp}{App} with specified error output setting. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cur\+\_\+error\+\_\+output} & If true, error messages will be printed to stdout. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classApp_a5b9602473edc9c73ce125a73f74610d1}\label{classApp_a5b9602473edc9c73ce125a73f74610d1} 
+\index{App@{App}!do\_load\_custom\_model@{do\_load\_custom\_model}}
+\index{do\_load\_custom\_model@{do\_load\_custom\_model}!App@{App}}
+\doxysubsubsection{\texorpdfstring{do\_load\_custom\_model()}{do\_load\_custom\_model()}}
+{\footnotesize\ttfamily int App\+::do\+\_\+load\+\_\+custom\+\_\+model (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$}]{args }\end{DoxyParamCaption})}
+
+
+
+Loads a \doxylink{classPerceptron}{Perceptron} model from a file. 
+
+Expected args\+: \mbox{[}"{}load\+\_\+custom\+\_\+model"{}, $<$model\+\_\+path$>$\mbox{]} 
+\begin{DoxyParams}{Parameters}
+{\em args} & Vector of command arguments \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, -\/1 if file not found or invalid 
+\end{DoxyReturn}
+\Hypertarget{classApp_a18a9b2f648c275f5e84009e80cf56942}\label{classApp_a18a9b2f648c275f5e84009e80cf56942} 
+\index{App@{App}!do\_load\_default\_model@{do\_load\_default\_model}}
+\index{do\_load\_default\_model@{do\_load\_default\_model}!App@{App}}
+\doxysubsubsection{\texorpdfstring{do\_load\_default\_model()}{do\_load\_default\_model()}}
+{\footnotesize\ttfamily void App\+::do\+\_\+load\+\_\+default\+\_\+model (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Reloads the default \doxylink{classPerceptron}{Perceptron} model from its source file. 
+
+Restores both current and default models to initial state. \Hypertarget{classApp_a1f00c121307efce0114e15cc070f07c2}\label{classApp_a1f00c121307efce0114e15cc070f07c2} 
+\index{App@{App}!do\_make\_custom\_model@{do\_make\_custom\_model}}
+\index{do\_make\_custom\_model@{do\_make\_custom\_model}!App@{App}}
+\doxysubsubsection{\texorpdfstring{do\_make\_custom\_model()}{do\_make\_custom\_model()}}
+{\footnotesize\ttfamily int App\+::do\+\_\+make\+\_\+custom\+\_\+model (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$}]{args }\end{DoxyParamCaption})}
+
+
+
+Creates a custom \doxylink{classPerceptron}{Perceptron} model with specified hidden layer sizes. 
+
+Expected args\+: \mbox{[}"{}make\+\_\+custom\+\_\+model"{}, $<$size1$>$, $<$size2$>$, ...\mbox{]} 
+\begin{DoxyParams}{Parameters}
+{\em args} & Vector of command arguments specifying hidden layers \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, -\/1 on invalid input 
+\end{DoxyReturn}
+\Hypertarget{classApp_a64bfa4ff910602de73ff798f1bcd46b6}\label{classApp_a64bfa4ff910602de73ff798f1bcd46b6} 
+\index{App@{App}!do\_predict@{do\_predict}}
+\index{do\_predict@{do\_predict}!App@{App}}
+\doxysubsubsection{\texorpdfstring{do\_predict()}{do\_predict()}}
+{\footnotesize\ttfamily int App\+::do\+\_\+predict (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$}]{args }\end{DoxyParamCaption})}
+
+
+
+Predicts the class of an image given command arguments. 
+
+Expected args\+: \mbox{[}"{}predict"{}, $<$image\+\_\+path$>$\mbox{]} 
+\begin{DoxyParams}{Parameters}
+{\em args} & Vector of command arguments \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on successful prediction, -\/1 on error 
+\end{DoxyReturn}
+\Hypertarget{classApp_af8d205aa04d696d062d0bb7ddc710aa7}\label{classApp_af8d205aa04d696d062d0bb7ddc710aa7} 
+\index{App@{App}!do\_save\_model@{do\_save\_model}}
+\index{do\_save\_model@{do\_save\_model}!App@{App}}
+\doxysubsubsection{\texorpdfstring{do\_save\_model()}{do\_save\_model()}}
+{\footnotesize\ttfamily int App\+::do\+\_\+save\+\_\+model (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$}]{args }\end{DoxyParamCaption})}
+
+
+
+Saves the current model to a file. 
+
+Expected args\+: \mbox{[}"{}save\+\_\+model"{}, $<$output\+\_\+path$>$\mbox{]} 
+\begin{DoxyParams}{Parameters}
+{\em args} & Vector of command arguments \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, -\/1 on error 
+\end{DoxyReturn}
+\Hypertarget{classApp_a882a76725b6a6f07485022dc9bf9e091}\label{classApp_a882a76725b6a6f07485022dc9bf9e091} 
+\index{App@{App}!do\_train@{do\_train}}
+\index{do\_train@{do\_train}!App@{App}}
+\doxysubsubsection{\texorpdfstring{do\_train()}{do\_train()}}
+{\footnotesize\ttfamily int App\+::do\+\_\+train (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$}]{args }\end{DoxyParamCaption})}
+
+
+
+Trains the current model using labeled data file. 
+
+Expected args\+: \mbox{[}"{}train"{}, $<$file\+\_\+path$>$, $<$epochs$>$, $<$learning\+\_\+rate$>$\mbox{]} 
+\begin{DoxyParams}{Parameters}
+{\em args} & Vector of command arguments \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, -\/1 on failure 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+bin/\mbox{\hyperlink{app_8h}{app.\+h}}\item 
+bin/\mbox{\hyperlink{app_8cpp}{app.\+cpp}}\end{DoxyCompactItemize}

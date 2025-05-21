@@ -1,0 +1,97 @@
+\doxysection{model.\+h}
+\hypertarget{model_8h_source}{}\label{model_8h_source}\index{bin/model.h@{bin/model.h}}
+\mbox{\hyperlink{model_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MODEL\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MODEL\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <armadillo>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <filesystem>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <cassert>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00023\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classPerceptron}{Perceptron}}\ \{}
+\DoxyCodeLine{00024\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{int}\ input\_size;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00026\ \ \ \ \ std::vector<int>\ hidden\_layers\_size;\ \ \ \ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{int}\ output\_size;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{double}\ learning\_rate;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{int}\ epochs;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ std::vector<arma::mat>\ weights\_input\_hidden;\ \ }
+\DoxyCodeLine{00032\ \ \ \ \ arma::mat\ weights\_output\_hidden;\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00033\ \ \ \ \ std::vector<arma::mat>\ bias\_input\_hidden;\ \ \ \ }
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ std::vector<arma::mat>\ hidden\_layer\_input;\ \ \ }
+\DoxyCodeLine{00036\ \ \ \ \ std::vector<arma::mat>\ hidden\_layer\_output;\ \ }
+\DoxyCodeLine{00037\ \ \ \ \ arma::mat\ final\_hidden\_layer\_output;\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ arma::mat\ X;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00047\ \ \ \ \ arma::mat\ one\_hot(\textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ n\ =\ 10);}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{bool}\ image\_path\_correct(\textcolor{keyword}{const}\ std::string\&\ path);}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00065\ \ \ \ \ \mbox{\hyperlink{classPerceptron}{Perceptron}}(\textcolor{keywordtype}{int}\ input\_size\ =\ 28\ *\ 28,}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<int>\ hidden\_layers\_size\ =\ \{400,\ 256,\ 128\},}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ output\_size\ =\ 10,}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ learning\_rate\ =\ 0.01,}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ epochs\ =\ 1);}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00075\ \ \ \ \ \mbox{\hyperlink{classPerceptron_ad5fee0c61ed81414e49d9ace4db41374}{Perceptron}}(\textcolor{keyword}{const}\ std::string\&\ path);}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPerceptron_aa56e88363310deddd1b83bea60dbc9e8}{gen\_weights}}();}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPerceptron_a652a87df4f58c5dd5db2048828e171f5}{bias\_gen}}();}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00092\ \ \ \ \ arma::mat\ \mbox{\hyperlink{classPerceptron_abe2462491eab7c50ab28896690c8de4f}{tanh\_activation}}(\textcolor{keyword}{const}\ arma::mat\&\ x);}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00099\ \ \ \ \ arma::mat\ \mbox{\hyperlink{classPerceptron_a2ca4805686aabe997a61c1564e5fccb3}{tanh\_derivative}}(\textcolor{keyword}{const}\ arma::mat\&\ x);}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00106\ \ \ \ \ arma::mat\ \mbox{\hyperlink{classPerceptron_af127d7cd994c7c9bc6af1da2bacf1cdb}{softmax}}(\textcolor{keyword}{const}\ arma::mat\&\ x);}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00113\ \ \ \ \ arma::mat\ \mbox{\hyperlink{classPerceptron_ac52b51bb6c27773d81d1248b4f8d4bea}{forward}}(\textcolor{keyword}{const}\ arma::mat\&\ X);}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPerceptron_a0dcf1dcbd79fa59bff187fc0bc899ab4}{backprop}}(\textcolor{keywordtype}{int}\ y\_train);}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPerceptron_af754712020d0dbdf09569527f2f64e59}{train}}(\textcolor{keyword}{const}\ std::vector<arma::mat>\&\ X\_train,}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<int>\&\ y\_train,}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ epochs,}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ learning\_rate);}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classPerceptron_a170b7cf1ebfaf7a93f8563417c694cd5}{predict}}(\textcolor{keyword}{const}\ arma::mat\&\ X);}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classPerceptron_acaaab8ef2228d3aded453dad8db28bfe}{predict\_image}}(\textcolor{keyword}{const}\ std::string\&\ path);}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00151\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPerceptron_a839c707c81134df6ee331b1f740e8447}{save\_model}}(\textcolor{keyword}{const}\ std::string\&\ path);}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPerceptron_a4db929a9a4e493a6d35802840973cb05}{load\_model}}(\textcolor{keyword}{const}\ std::string\&\ path);}
+\DoxyCodeLine{00158\ }
+\DoxyCodeLine{00165\ \ \ \ \ arma::mat\ \mbox{\hyperlink{classPerceptron_a84fd443bb4d22e836985415d4dd6bca4}{read\_image}}(\textcolor{keyword}{const}\ std::string\&\ path,}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ image\_bbp\ =\ 1);}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00173\ \ \ \ \ std::vector<arma::mat>\ \mbox{\hyperlink{classPerceptron_a9ae7f00175e0af70bd45f0936d735bb3}{read\_images}}(\textcolor{keyword}{const}\ std::vector<std::string>\&\ pathes);}
+\DoxyCodeLine{00174\ }
+\DoxyCodeLine{00181\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPerceptron_a096acbfc874a80a43354bca5767bee50}{train\_on\_specific\_images}}(\textcolor{keyword}{const}\ std::string\&\ path\_to\_file,}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ cur\_epochs\ =\ -\/100,}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ cur\_learning\_rate\ =\ -\/100);}
+\DoxyCodeLine{00184\ }
+\DoxyCodeLine{00187\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<int>\ get\_hidden\_layers\_size()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00188\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<arma::mat>\ get\_weights\_input\_hidden()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00189\ \ \ \ \ \textcolor{keyword}{const}\ arma::mat\&\ get\_weights\_output\_hidden()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00190\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<arma::mat>\ get\_bias\_input\_hidden()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00191\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<arma::mat>\ get\_hidden\_layer\_input()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00192\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<arma::mat>\ get\_hidden\_layer\_output()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00193\ \ \ \ \ \textcolor{keyword}{const}\ arma::mat\ get\_final\_hidden\_layer\_output()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00194\ \ \ \ \ \textcolor{keywordtype}{int}\ get\_input\_size()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00195\ \ \ \ \ \textcolor{keywordtype}{int}\ get\_output\_size()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00197\ }
+\DoxyCodeLine{00198\ \ \ \ \ \textcolor{keywordtype}{bool}\ error\_output\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00199\ \};}
+\DoxyCodeLine{00200\ }
+\DoxyCodeLine{00201\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

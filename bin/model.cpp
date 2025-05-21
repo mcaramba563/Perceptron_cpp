@@ -1,6 +1,11 @@
 #include "model.h"
 #include <stdexcept>
 
+/** 
+ * \file
+ * \brief File with Perceptron model implementation
+ */
+
 #ifndef STB_IMAGE_IMPLEMENTATION
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
