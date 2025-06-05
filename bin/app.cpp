@@ -35,7 +35,12 @@ int App::do_predict(const std::vector<std::string> args) {
             std::cerr << "You need to specify the path to file" << std::endl;
         return -1;
     }
-
+    if (!file_exists(args[1])) {
+        if (error_output)
+            std::cerr << "Check the file name" << std::endl;
+        return -1;
+    }
+    
     int ans = nn.predict_image(args[1]);
     if (ans == -1) {
         if (error_output)
