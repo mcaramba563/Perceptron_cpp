@@ -36,7 +36,7 @@ TEST_CASE("Test incorrect predictions") {
     
     
     CHECK(app_instance.do_predict({"predict"}) == -1);
-    CHECK_THROWS_AS(app_instance.do_predict({"predict", "../../images/mnist_png/test/9asdad/7.png"}), std::exception);
+    CHECK(app_instance.do_predict({"predict", "../../images/mnist_png/test/9asdad/7.png"}) == -1);
 }
 
 TEST_CASE("Test incorrect training cases") {
