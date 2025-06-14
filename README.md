@@ -8,7 +8,6 @@ This repository contains a C++ implementation of a multilayer perceptron (MLP) u
 
 * **Custom Model Architectures**: Define arbitrary hidden layer sizes at runtime.
 * **Train on Image Data**: Train the network on labeled datasets of images.
-* **Randomized Training**: Sample random images for quick experiments.
 * **Interactive CLI**: Command-line interface to issue training, prediction, and model management commands.
 * **Persistence**: Save and load model weights and biases to/from disk.
 * **Default Model**: Ship with a pretrained default model for immediate use.
@@ -19,8 +18,6 @@ This repository contains a C++ implementation of a multilayer perceptron (MLP) u
 ## Prerequisites
 
 * C++17 (or later)
-* [Armadillo](https://arma.sourceforge.net/) (matrix computations)
-* [stb\_image.h](https://github.com/nothings/stb) (image loading)
 * A C++ build system (Make, CMake, etc.)
 
 ---
@@ -34,9 +31,7 @@ This repository contains a C++ implementation of a multilayer perceptron (MLP) u
    cd Perceptron_cpp
    ```
 
-2. **Ensure dependencies** are installed (Armadillo, stb\_image).
-
-3. **Build** using CMake (example):
+2. **Build** using CMake (example):
 
    ```bash
    mkdir build && cd build
@@ -44,7 +39,7 @@ This repository contains a C++ implementation of a multilayer perceptron (MLP) u
    make
    ```
 
-4. This produces an executable (e.g., `perceptron_app`).
+3. This produces an executable (e.g., `perceptron_app`).
 
 ---
 
