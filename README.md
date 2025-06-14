@@ -141,7 +141,7 @@ exit
 ## Example Workflow
 
 ```bash
-./perceptron_app
+./model_try
 
 make_custom_model 400 256 128
 train train_list.txt 5 0.01
