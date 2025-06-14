@@ -85,19 +85,7 @@ train <dataset_file> <epochs> <learning_rate>
 train data/train_list.txt 5 0.01
 ```
 
-### 3. Train on Random Images
-
-```
-train_on_random_images <count> <epochs> <learning_rate>
-```
-
-Example:
-
-```
-train_on_random_images 20000 2 0.01
-```
-
-### 4. Make Predictions
+### 3. Make Predictions
 
 ```
 predict <image_path>
@@ -109,7 +97,7 @@ Example:
 predict images/test/0_10.png
 ```
 
-### 5. Save the Model
+### 4. Save the Model
 
 ```
 save_model <output_path>
@@ -121,7 +109,7 @@ Example:
 save_model models/my_model.bin
 ```
 
-### 6. Load a Saved Model
+### 5. Load a Saved Model
 
 ```
 load_custom_model <model_path>
@@ -133,13 +121,13 @@ Example:
 load_custom_model models/my_model.bin
 ```
 
-### 7. Load Default Model
+### 6. Load Default Model
 
 ```
 load_default_model
 ```
 
-### 8. Reset Training
+### 7. Reset Training
 
 ```
 reset_training
@@ -147,7 +135,7 @@ reset_training
 
 (Reverts to the state before any training.)
 
-### 9. Exit
+### 8. Exit
 
 ```
 exit
