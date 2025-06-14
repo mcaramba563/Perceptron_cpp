@@ -97,7 +97,7 @@ rebuild_cache/fast: rebuild_cache
 
 # Special rule for the target list_install_components
 list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Available install components are: \"Unspecified\""
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Available install components are: \"Unspecified\" \"dev\""
 .PHONY : list_install_components
 
 # Special rule for the target list_install_components
@@ -209,6 +209,32 @@ app_tests: cmake_check_build_system
 app_tests/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/app_tests.dir/build.make CMakeFiles/app_tests.dir/build
 .PHONY : app_tests/fast
+
+#=============================================================================
+# Target rules for targets named armadillo
+
+# Build rule for target.
+armadillo: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 armadillo
+.PHONY : armadillo
+
+# fast build rule for target.
+armadillo/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/armadillo-build/CMakeFiles/armadillo.dir/build.make _deps/armadillo-build/CMakeFiles/armadillo.dir/build
+.PHONY : armadillo/fast
+
+#=============================================================================
+# Target rules for targets named smoke_test
+
+# Build rule for target.
+smoke_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 smoke_test
+.PHONY : smoke_test
+
+# fast build rule for target.
+smoke_test/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/armadillo-build/tests1/CMakeFiles/smoke_test.dir/build.make _deps/armadillo-build/tests1/CMakeFiles/smoke_test.dir/build
+.PHONY : smoke_test/fast
 
 #=============================================================================
 # Target rules for targets named doctest_with_main
@@ -366,9 +392,11 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... test"
 	@echo "... app_tests"
+	@echo "... armadillo"
 	@echo "... doctest_with_main"
 	@echo "... model_tests"
 	@echo "... model_try"
+	@echo "... smoke_test"
 	@echo "... app.o"
 	@echo "... app.i"
 	@echo "... app.s"

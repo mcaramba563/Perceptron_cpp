@@ -44,7 +44,12 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/uladzislau/Desktop/aip/project_cpp/bin/build/external/cmake_install.cmake")
+  include("/home/uladzislau/Desktop/aip/project_cpp/bin/build/_deps/armadillo-build/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("/home/uladzislau/Desktop/aip/project_cpp/bin/build/_deps/doctest-build/cmake_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)

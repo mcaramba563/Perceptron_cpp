@@ -92,30 +92,6 @@ TEST_CASE("Test saving and loading model") {
     CHECK(app_instance.do_load_custom_model({"load_custom_model", "../../models/default_model"}) == 0);
 }
 
-TEST_CASE("Test model reinitialization") {
-    App app_instance(false);
-    
-    Perceptron previous_nn = app_instance.nn;
-
-    app_instance.do_make_custom_model({"make_custom_model", "400", "200", "100"});
-
-    app_instance.nn = previous_nn;
-
-    bool weights_match = true;
-    auto weights_input_hidden = app_instance.nn.get_weights_input_hidden();
-    auto previous_weights_input_hidden = previous_nn.get_weights_input_hidden();
-    for (size_t i = 0; i < weights_input_hidden.size(); ++i) {
-        if (!arma::approx_equal(weights_input_hidden[i], previous_weights_input_hidden[i], "absdiff", 1e-6)) {
-            weights_match = false;
-            break;
-        }
-    }
-    auto weights_output_hidden = app_instance.nn.get_weights_output_hidden();
-    auto previous_weights_output_hidden = previous_nn.get_weights_output_hidden();
-    CHECK(weights_match);
-    CHECK(arma::approx_equal(weights_output_hidden, previous_weights_output_hidden, "absdiff", 1e-6));
-}
-
 TEST_CASE("Test edge cases for training") {
     App app_instance(false);
     

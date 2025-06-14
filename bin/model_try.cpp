@@ -3,7 +3,6 @@
 #include <string>
 
 int main() {
-    // predict ../../images/mnist_png/train/1/11107.png
     App app;
     while (true) {
         std::string input;
